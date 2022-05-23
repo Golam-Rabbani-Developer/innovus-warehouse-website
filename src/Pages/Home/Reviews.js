@@ -5,7 +5,7 @@ const Reviews = () => {
     const [number, setNumber] = useState(3)
     const [reviews, setReviews] = useState([])
     useEffect(() => {
-        fetch(`reviewData.json`)
+        fetch(`http://localhost:5000/reviews`)
             .then(res => res.json())
             .then(data => setReviews(data.reverse()))
     }, [])
@@ -25,7 +25,7 @@ const Reviews = () => {
             <div className='flex flex-col lg:flex-row items-center justify-around overflow-auto gap-5 mt-10'>
                 {
                     reviews.slice(0, number).map(review => <Review
-                        key={review.id}
+                        key={review._id}
                         review={review}
                     ></Review>)
                 }

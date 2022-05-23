@@ -15,17 +15,17 @@ const Header = () => {
     </>
     const socialMenu = <>
         <div className='text-white flex items-center justify-between font-roboto flex-col lg:flex-row'>
-            <div className='flex items-center gap-12'>
+            <div className='flex items-center gap-12 bg-slate-700 w-6/12 py-3 pl-5'>
                 <li className='list-none text-sm flex items-center gap-3'><AiFillPhone className='text-primary text-2xl' /> <span>+88-985746563</span></li>
                 <li className='list-none text-sm flex items-center gap-3'><MdAttachEmail className='text-primary text-2xl' /> <span>innovus@gmail.com</span></li>
                 <li className='list-none text-sm flex items-center gap-3'><GoLocation className='text-primary text-2xl' /> <span>Blue-Street,Mirpur-10</span></li>
             </div>
 
-            <div className='flex gap-8 text-white'>
-                <li className='list-none'><GrFacebookOption className='transition ease-in-out delay-150 text-slate-400 hover:text-primary hover:scale-110 duration-300' /></li>
-                <li className='list-none'><FaLinkedinIn className='transition ease-in-out delay-150 text-slate-400 hover:text-primary hover:scale-110 duration-300' /></li>
-                <li className='list-none'><FaPinterestP className='transition ease-in-out delay-150 text-slate-400 hover:text-primary hover:scale-110 duration-300' /></li>
-                <li className='list-none'><FaSkype className='transition ease-in-out delay-150 text-slate-400 hover:text-primary hover:scale-110 duration-300' /></li>
+            <div className='flex items-end justify-end gap-8 text-white bg-primary w-6/12 py-4 pr-5'>
+                <li className='list-none'><GrFacebookOption className='transition ease-in-out delay-150 text-black hover:text-white hover:scale-110 duration-300' /></li>
+                <li className='list-none'><FaLinkedinIn className='transition ease-in-out delay-150 text-black hover:text-white hover:scale-110 duration-300' /></li>
+                <li className='list-none'><FaPinterestP className='transition ease-in-out delay-150 text-black hover:text-white hover:scale-110 duration-300' /></li>
+                <li className='list-none'><FaSkype className='transition ease-in-out delay-150 text-black hover:text-white hover:scale-110 duration-300' /></li>
             </div>
         </div>
     </>

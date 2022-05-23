@@ -4,6 +4,7 @@ import About from './About';
 import Banner from './Banner/Banner';
 import Blogs from './Blogs';
 import Business from './Business/Business';
+import Products from './Products';
 import Projects from './Projects';
 import Reviews from './Reviews';
 import Services from './Services';
@@ -15,6 +16,7 @@ const Home = () => {
             <Banner></Banner>
             <About></About>
             <Services></Services>
+            <Products></Products>
             <Projects></Projects>
             <Workers></Workers>
             <Business></Business>

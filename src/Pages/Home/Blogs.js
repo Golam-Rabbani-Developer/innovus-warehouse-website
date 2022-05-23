@@ -2,6 +2,7 @@
 
 import React from 'react';
 import Blog from './Blog';
+import "./Blogs.css"
 import { BiRightArrow } from "react-icons/bi"
 
 const blogs = [
@@ -13,7 +14,7 @@ const blogs = [
 
 const Blogs = () => {
     return (
-        <div className='gap-4 grid grid-cols-1 lg:grid-cols-4 mt-40 lg:px-44 px-10 font-roboto py-20'>
+        <div className='blogs gap-4 grid grid-cols-1 lg:grid-cols-4 mt-40 lg:px-44 px-10 font-roboto py-20'>
             <div className='space-y-10 text-center lg:text-left mb-8 lg:mb-0'>
                 <h2 className='font-bold text-4xl font-oswald  mb-8 lg:mb-0 '>Our Latest News Of This Year</h2>
                 <p className='lg:border-b-2 text-sm border-primary flex items-center gap-3 '><BiRightArrow className='text-secondary' /> Design And Industry </p>
