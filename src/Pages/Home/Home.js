@@ -3,17 +3,23 @@ import Footer from '../Shared/Footer';
 import About from './About';
 import Banner from './Banner/Banner';
 import Blogs from './Blogs';
+import Business from './Business/Business';
 import Projects from './Projects';
+import Reviews from './Reviews';
 import Services from './Services';
+import Workers from './Workers';
 
 const Home = () => {
     return (
         <div>
             <Banner></Banner>
             <About></About>
-            <Projects></Projects>
             <Services></Services>
+            <Projects></Projects>
+            <Workers></Workers>
+            <Business></Business>
             <Blogs></Blogs>
+            <Reviews></Reviews>
             <Footer></Footer>
         </div>
     );
