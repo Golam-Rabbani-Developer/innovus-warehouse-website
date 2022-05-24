@@ -5,8 +5,10 @@ import { FaLinkedinIn, FaPinterestP, FaSkype } from "react-icons/fa"
 import { AiFillPhone } from "react-icons/ai"
 import { MdAttachEmail } from 'react-icons/md'
 import { GoLocation } from 'react-icons/go'
+import { Link, useLocation } from 'react-router-dom';
 
 const Header = () => {
+    const location = useLocation()
     const menu = <>
         <li className='text-white'><a>Home</a></li>
         <li className='text-white'><a>About Us</a></li>
@@ -30,11 +32,11 @@ const Header = () => {
         </div>
     </>
     return (
-        <div className='absolute top-0 z-10 w-full '>
+        <div className={`z-10 w-full ${location.pathname === "/" || location.pathname === "/home" ? " absolute top-0 " : "relative bg-secondary"}`}>
             <div className='px-20 py-8 hidden lg:block'>
                 {socialMenu}
             </div>
-            <div class="navbar bg-none font-roboto text-white lg:px-20  ">
+            <div class={`navbar  font-roboto text-white  lg:px-20 ${location.pathname === "/" || location.pathname === "/home" ? "bg-none " : "bg-secondary"}`}>
                 <div class="navbar-start">
                     <div class="dropdown">
                         <label tabindex="0" class="btn btn-ghost lg:hidden">
@@ -52,7 +54,7 @@ const Header = () => {
                     </ul>
                 </div>
                 <div class="navbar-end">
-                    <PrimaryBtn>Login</PrimaryBtn>
+                    <Link to="/login"> <PrimaryBtn>Login</PrimaryBtn></Link>
                 </div>
             </div>
         </div>

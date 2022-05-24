@@ -1,5 +1,6 @@
 import React from 'react';
 import Footer from '../Shared/Footer';
+import Header from '../Shared/Header';
 import About from './About';
 import Banner from './Banner/Banner';
 import Blogs from './Blogs';
@@ -13,6 +14,7 @@ import Workers from './Workers';
 const Home = () => {
     return (
         <div>
+            <Header></Header>
             <Banner></Banner>
             <About></About>
             <Services></Services>
