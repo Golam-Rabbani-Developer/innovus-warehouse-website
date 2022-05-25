@@ -6,7 +6,6 @@ const Product = ({ product }) => {
     return (
         <div class="card border-b-2 border-secondary transition ease-in-out delay-150  bg-blue-50 hover:scale-95 duration-200">
             <figure class="px-10 pt-10">
-
                 <img style={{ width: "100px", height: "100px" }} className=' mx-auto' src={picture} alt="Shoes" class="rounded-xl" />
             </figure>
             <div class="card-body items-center ">

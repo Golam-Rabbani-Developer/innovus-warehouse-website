@@ -5,7 +5,12 @@ import Service from './Service';
 const Services = () => {
     const [services, setServices] = useState([])
     useEffect(() => {
-        fetch('http://localhost:5000/services')
+        fetch('http://localhost:5000/services', {
+            method: "GET",
+            headers: {
+                "authorization": `Bearer ${(localStorage.getItem("accessToken"))}`
+            }
+        })
             .then(res => res.json())
             .then(data => setServices(data))
     }, [])

@@ -11,19 +11,23 @@ import { loadStripe } from '@stripe/stripe-js';
 
 const stripePromise = loadStripe('pk_test_51L0mirGh3CcvB5xE649I2ZRsP8ds0hsUJirzcxky8hA7cfTdTvTdLD2a18T7q27fnC3efjjSHYdruvEOFweezeyc00eH8SOPQO');
 const Billings = () => {
-
     const [clientSecret, setClientSecret] = useState("");
     const [paymentError, setPaymentError] = useState(null)
     const { register, formState: { errors }, handleSubmit } = useForm();
     const { id } = useParams()
     const { isLoading, data: product, refetch } = useQuery('product', () =>
-        fetch(`http://localhost:5000/product/${id}`).then(res =>
+        fetch(`http://localhost:5000/product/${id}`, {
+            method: "GET",
+            headers: {
+                "authorization": `Bearer ${(localStorage.getItem("accessToken"))}`
+            }
+        }).then(res =>
             res.json()
         )
     )
 
-    const { name, picture, description, price, newQuantity } = product;
-    const newPrice = parseInt(price * newQuantity).toFixed(2)
+
+    const newPrice = parseInt(product?.price * product?.newQuantity).toFixed(2)
 
 
     if (isLoading) {
@@ -114,7 +118,7 @@ const Billings = () => {
                         <label class="label">
                             <span class="label-text">Payable Amount</span>
                         </label>
-                        <input id='amount' name="amount" readOnly value={`$ ${(price * newQuantity).toFixed(2)}`} type="text" placeholder="Type here" class="input input-bordered w-full max-w-lg focus:outline-none font-bold"
+                        <input id='amount' name="amount" readOnly value={`$ ${(product?.price * product?.newQuantity).toFixed(2)}`} type="text" placeholder="Type here" class="input input-bordered w-full max-w-lg focus:outline-none font-bold"
                             {...register("amount", {
                                 required: {
                                     value: true,
@@ -155,12 +159,12 @@ const Billings = () => {
             <div className=''>
                 <div className='flex items-center justify-center gap-4 flex-col'>
                     <div className='bg-slate-300 rounded-md'>
-                        <img className='w-full ' src={picture} alt="product-pic" />
+                        <img className='w-full ' src={product?.picture} alt="product-pic" />
                     </div>
                     <div className=' mt-10 space-y-4 w-full pl-20 lg:p-0'>
-                        <h2 className='font-bold text-2xl text-secondary'>{name}</h2>
-                        <p className='font-bold text-xl text-slate-400'>Price Per Piece: $ {price}</p>
-                        <p className='font-bold text-red-500'>Order Quantity : <span className='text-slate-400'>{newQuantity} Pieces</span></p>
+                        <h2 className='font-bold text-2xl text-secondary'>{product?.name}</h2>
+                        <p className='font-bold text-xl text-slate-400'>Price Per Piece: $ {product?.price}</p>
+                        <p className='font-bold text-red-500'>Order Quantity : <span className='text-slate-400'>{product?.newQuantity} Pieces</span></p>
                         <p className='font-bold text-xl'>Catrgory : <span className='text-slate-400'>Engineering</span></p>
                     </div>
                 </div>

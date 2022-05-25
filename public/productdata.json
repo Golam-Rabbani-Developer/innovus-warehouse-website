@@ -1,63 +1,63 @@
 [
     {
         "pay": false,
-        "price": "$188.80",
+        "price": 188.80,
         "picture": "https://i.ibb.co/6txcxwf/cutting-saw-1-removebg-preview-1.png",
         "quantity": 324,
         "name": "Engineering File"
     },
     {
         "pay": false,
-        "price": "$129.30",
+        "price": 129.30,
         "picture": "https://i.ibb.co/vBYrK63/Digital-multimeter-1-removebg-preview-1.png",
         "quantity": 323,
         "name": "Electric Multimeter"
     },
     {
         "pay": false,
-        "price": "$188.34",
+        "price": 188.34,
         "picture": "https://i.ibb.co/jZ4ZMtH/file-1.png",
         "quantity": 328,
         "name": "Cutting Saw"
     },
     {
         "pay": false,
-        "price": "$122.62",
+        "price": 122.62,
         "picture": "https://i.ibb.co/SVYJdt6/hammer-PNG1126-1-removebg-preview-1.png",
         "quantity": 324,
         "name": "Hammer"
     },
     {
         "pay": false,
-        "price": "$137.73",
+        "price": 137.73,
         "picture": "https://i.ibb.co/Cw2SQxC/lathe-machine-500x500-1-removebg-preview-1.png",
         "quantity": 324,
         "name": "Lethe Machine"
     },
     {
         "pay": false,
-        "price": "$144.87",
+        "price": 144.87,
         "picture": "https://i.ibb.co/SsF9Zw8/Snips-1-removebg-preview-1-1.png",
         "quantity": 337,
         "name": "Nose Plier"
     },
     {
         "pay": false,
-        "price": "$131.05",
+        "price": 131.05,
         "picture": "https://i.ibb.co/Phhh6r5/Thermal-Cycler-PCR-1-removebg-preview-1.png",
         "quantity": 325,
         "name": "Frost Simpson"
     },
     {
         "pay": false,
-        "price": "$130.30",
+        "price": 130.30,
         "picture": "https://i.ibb.co/f4Nkf2H/Toolbox-1.png",
         "quantity": 321,
         "name": "Tanya Perez"
     },
     {
         "pay": false,
-        "price": "$178.68",
+        "price": 178.68,
         "picture": "https://i.ibb.co/1RRS1L7/vise-1-removebg-preview-1-1.png",
         "quantity": 340,
         "name": "Brittany Guthrie"

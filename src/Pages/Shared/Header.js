@@ -6,14 +6,20 @@ import { AiFillPhone } from "react-icons/ai"
 import { MdAttachEmail } from 'react-icons/md'
 import { GoLocation } from 'react-icons/go'
 import { Link, useLocation } from 'react-router-dom';
+import { useAuthState } from 'react-firebase-hooks/auth';
+import { signOut } from 'firebase/auth';
+import auth from '../../firebaseinit';
 
 const Header = () => {
+    const [user] = useAuthState(auth)
     const location = useLocation()
     const menu = <>
-        <li className='text-white'><a>Home</a></li>
+        <li className='text-white'><Link to='/home'>Home</Link></li>
+        <li className='text-white'><Link to="/shop">Shop</Link></li>
         <li className='text-white'><a>About Us</a></li>
-        <li className='text-white'><a>Reviews</a></li>
+        <li className='text-white'><Link to="/reviews">Reviews</Link></li>
         <li className='text-white'><a>Blogs</a></li>
+        <li className='text-white'><Link to="/dashboard">Dashboard</Link></li>
     </>
     const socialMenu = <>
         <div className='text-white flex items-center justify-between font-roboto flex-col lg:flex-row'>
@@ -54,7 +60,18 @@ const Header = () => {
                     </ul>
                 </div>
                 <div class="navbar-end">
-                    <Link to="/login"> <PrimaryBtn>Login</PrimaryBtn></Link>
+                    <label for="Dashboard-page" tabindex="1" class="btn btn-ghost lg:hidden">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h8m-8 6h16" /></svg>
+                    </label>
+                    {
+
+                        user ? <button onClick={() => signOut(auth)} className="btn btn-primary bg-red-500 rounded-none border-none text-white"> Sign Out</button>
+                            :
+                            <Link to="/login"> <PrimaryBtn>Login</PrimaryBtn></Link>
+
+                    }
+
+
                 </div>
             </div>
         </div>

@@ -24,7 +24,7 @@ const Home = () => {
             <Business></Business>
             <Blogs></Blogs>
             <Reviews></Reviews>
-            <Footer></Footer>
+
         </div>
     );
 };
