@@ -20,7 +20,7 @@ const Billings = () => {
     const [show, setShow] = useState(false)
     const [clientSecret, setClientSecret] = useState("");
     const [paymentError, setPaymentError] = useState(null)
-    const { register, formState: { errors }, handleSubmit } = useForm();
+    const { register, formState: { errors }, handleSubmit, reset } = useForm();
     const { id } = useParams()
     const { isLoading, data: product, refetch } = useQuery('product', () =>
         fetch(`http://localhost:5000/product/${id}`, {
@@ -68,7 +68,7 @@ const Billings = () => {
                 if (data.insertedId) {
                     toast.success("Your Order Is Confirmed. Pay Now")
                     setShow(!show)
-
+                    reset()
                 }
 
             })

@@ -14,7 +14,7 @@ const Signup = () => {
     const [createUserWithEmailAndPassword, user, loading, error,] = useCreateUserWithEmailAndPassword(auth);
     const [updateProfile, updating, updateError] = useUpdateProfile(auth);
     const { token } = useToken(user || guser)
-    const { register, formState: { errors }, handleSubmit } = useForm();
+    const { register, formState: { errors }, handleSubmit, reset } = useForm();
     const words = ['W', 'e', 'l', 'c', 'o', 'm', 'e', 't', 'o', 'I', 'n', 'n', 'o', 'v', "u", "s"]
     const navigate = useNavigate()
     const location = useLocation()
@@ -42,6 +42,7 @@ const Signup = () => {
     const onSubmit = async (data) => {
         await createUserWithEmailAndPassword(data.email, data.password)
         await updateProfile({ displayName: data.name });
+        reset()
     }
 
     return (

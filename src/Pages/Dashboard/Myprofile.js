@@ -7,7 +7,7 @@ import auth from '../../firebaseinit';
 import Loading from '../Shared/Loading';
 
 const Myprofile = () => {
-    const { register, formState: { errors }, handleSubmit } = useForm();
+    const { register, formState: { errors }, handleSubmit, reset } = useForm();
     const [user] = useAuthState(auth)
     const [show, setShow] = useState(false)
     const formData = new FormData();
@@ -55,6 +55,7 @@ const Myprofile = () => {
                                 refetch()
 
                                 toast("Your Profile Is Updated Now")
+                                reset()
                             }
                         })
                 }

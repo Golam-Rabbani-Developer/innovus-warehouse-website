@@ -1,19 +1,24 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { MdAttachEmail } from "react-icons/md"
 import { BiUserVoice } from 'react-icons/bi'
 import { BsGoogle } from 'react-icons/bs'
-import { useSignInWithEmailAndPassword, useSignInWithGoogle } from 'react-firebase-hooks/auth';
+import { useSendPasswordResetEmail, useSignInWithEmailAndPassword, useSignInWithGoogle } from 'react-firebase-hooks/auth';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import auth from '../../../firebaseinit';
 import Loading from '../Loading';
 import useToken from '../../../hooks/useToken';
+import { toast } from 'react-toastify';
 const words = ['W', 'e', 'l', 'c', 'o', 'm', 'e', 't', 'o', 'I', 'n', 'n', 'o', 'v', "u", "s"]
 const Login = () => {
     const [signInWithGoogle, guser, gloading, gerror] = useSignInWithGoogle(auth);
     const [signInWithEmailAndPassword, user, loading, error,] = useSignInWithEmailAndPassword(auth);
+    const [email, setEmail] = useState('')
+    const [sendPasswordResetEmail, sending] = useSendPasswordResetEmail(
+        auth
+    );
     const { token } = useToken(user || guser)
-    const { register, formState: { errors }, handleSubmit } = useForm();
+    const { register, formState: { errors }, handleSubmit, reset } = useForm();
 
     const navigate = useNavigate()
     const location = useLocation()
@@ -26,7 +31,7 @@ const Login = () => {
             }
         }
     }, [from, navigate, token, user, guser])
-    if (loading || gloading) {
+    if (loading || gloading || sending) {
         return <Loading type="spokes" color="black"></Loading>
     }
 
@@ -34,9 +39,9 @@ const Login = () => {
     if (error || gerror) {
         signInError = <p className='text-red-500 font-bold my-3'>{error.message || gerror.message}</p>
     }
-    const onSubmit = data => {
-        signInWithEmailAndPassword(data.email, data.password)
-        console.log(data)
+    const onSubmit = async (data) => {
+        await signInWithEmailAndPassword(data.email, data.password)
+        reset()
     }
     return (
         <div className='flex items-center justify-center  mx-auto gap-12 min-h-screen'>
@@ -50,7 +55,7 @@ const Login = () => {
                             <span class="label-text text-slate-200 text-xl font-bold">Email</span>
                         </label>
                         <span className='bg-primary relative top-12 w-[38px] h-[48px] flex items-center justify-center text-white text-xl'><MdAttachEmail /></span>
-                        <input id='email' name="email" type="text" placeholder="Your Email" class="input input-bordered bg-slate-200  w-full max-w-xs rounded-none text-center"
+                        <input onBlur={(e) => setEmail(e.target.value)} id='email' name="email" type="text" placeholder="Your Email" class="input input-bordered bg-slate-200  w-full max-w-xs rounded-none text-center"
                             {...register("email", {
                                 required: {
                                     value: true,
@@ -80,7 +85,11 @@ const Login = () => {
                         </label>
                     </div>
 
-                    <div className='btn-link text-white mb-4 text-sm'>Forget Password</div>
+                    <div onClick={async () => {
+                        await sendPasswordResetEmail(email)
+                        console.log(email)
+                        toast("Check Your Mail to Reset Your Password")
+                    }} className='btn-link text-white mb-4 text-sm cursor-pointer'>Forget Password</div>
                     <div>
                         {signInError}
                     </div>
@@ -90,7 +99,9 @@ const Login = () => {
                 <div className='font-roboto text-slate-50 w-8/12 mx-auto'>
 
                     <div class="divider font-oswald mt-10">Or Try With</div>
-                    <div onClick={() => signInWithGoogle()} className='opacity-100 flex items-center border-[1px] border-secondary cursor-pointer justify-center gap-4 py-2 bg-gradient-to-r rounded-none from-purple-600 to-pink-600 hover:opacity-80 '>
+                    <div onClick={() => {
+                        signInWithGoogle()
+                    }} className='opacity-100 flex items-center border-[1px] border-secondary cursor-pointer justify-center gap-4 py-2 bg-gradient-to-r rounded-none from-purple-600 to-pink-600 hover:opacity-80 '>
                         <BsGoogle></BsGoogle>
                         Google
                     </div>

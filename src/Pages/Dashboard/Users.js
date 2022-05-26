@@ -20,7 +20,8 @@ const Users = () => {
         fetch(url, {
             method: "PUT",
             headers: {
-                'content-type': 'application/json'
+                'content-type': 'application/json',
+                "authorization": `Bearer ${localStorage.getItem("accessToken")}`
             }
         })
             .then(res => res.json())
@@ -28,6 +29,9 @@ const Users = () => {
                 if (data.modifiedCount > 0) {
                     refetch()
                     toast("You have succesfully made him admin")
+                }
+                else {
+                    toast.error("You are unauthorized make admin")
                 }
 
             })

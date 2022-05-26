@@ -9,7 +9,7 @@ import Loading from '../Shared/Loading';
 const Addreview = () => {
     const formData = new FormData();
     const [user] = useAuthState(auth)
-    const { register, formState: { errors }, handleSubmit } = useForm();
+    const { register, formState: { errors }, handleSubmit, reset } = useForm();
     const { isLoading, data: updateUser, refetch } = useQuery('updateduser', () =>
         fetch(`http://localhost:5000/user/${user?.email}`).then(res =>
             res.json()
@@ -53,6 +53,7 @@ const Addreview = () => {
                             console.log(data)
                             if (data.modifiedCount > 0) {
                                 toast("Thanks For Placing Your Review")
+                                reset()
                             }
                         })
 

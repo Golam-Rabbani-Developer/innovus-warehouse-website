@@ -2,7 +2,7 @@ import logo from './logo.svg';
 import './App.css';
 import Header from './Pages/Shared/Header';
 import { ToastContainer } from 'react-toastify';
-import { Route, Routes } from 'react-router-dom';
+import { Route, Routes, useLocation } from 'react-router-dom';
 import Home from './Pages/Home/Home';
 import Purchase from './Pages/Purchase';
 import Billings from './Pages/Billings';
@@ -21,7 +21,9 @@ import Users from './Pages/Dashboard/Users';
 import AllOrders from './Pages/Dashboard/AllOrders';
 import Allproducts from './Pages/Dashboard/Allproducts';
 import AddProduct from './Pages/Dashboard/AddProduct';
+import RequireAdmin from './Pages/Shared/RequireAdmin';
 function App() {
+  const location = useLocation()
   return (
     <div className=" font-primary">
       <Header></Header>
@@ -44,10 +46,18 @@ function App() {
           <Route path="myprofile" element={<Myprofile></Myprofile>}></Route>
           <Route path="addreview" element={<Addreview></Addreview>}></Route>
           <Route path="myorders" element={<Myorder></Myorder>}></Route>
-          <Route path="users" element={<Users></Users>}></Route>
-          <Route path="orders" element={<AllOrders></AllOrders>}></Route>
-          <Route path="allproducts" element={<Allproducts></Allproducts>}></Route>
-          <Route path="addproduct" element={<AddProduct></AddProduct>}></Route>
+          <Route path="users" element={<RequireAdmin>
+            <Users></Users>
+          </RequireAdmin>}></Route>
+          <Route path="orders" element={<RequireAdmin>
+            <AllOrders></AllOrders>
+          </RequireAdmin>}></Route>
+          <Route path="allproducts" element={<RequireAdmin>
+            <Allproducts></Allproducts>
+          </RequireAdmin>}></Route>
+          <Route path="addproduct" element={<RequireAdmin>
+            <AddProduct></AddProduct>
+          </RequireAdmin>}></Route>
 
         </Route>
 
@@ -59,7 +69,7 @@ function App() {
           <Billings></Billings>
         </RequireAuth>} />
       </Routes>
-      <Footer></Footer>
+      {location.pathname.includes('dashboard') ? '' : <Footer></Footer>}
       <ToastContainer />
     </div>
   );

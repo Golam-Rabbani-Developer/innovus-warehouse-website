@@ -21,7 +21,7 @@ const Allproducts = () => {
     }
 
     return (
-        <div className='mt-32 min-h-screen'>
+        <div className='my-32 min-h-screen'>
             <div class="overflow-x-auto">
                 <table class="table w-full">
                     <thead>

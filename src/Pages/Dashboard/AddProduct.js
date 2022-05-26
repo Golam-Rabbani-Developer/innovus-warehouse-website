@@ -4,7 +4,7 @@ import { toast } from 'react-toastify';
 
 const AddProduct = () => {
     const formData = new FormData();
-    const { register, formState: { errors }, handleSubmit } = useForm();
+    const { register, formState: { errors }, handleSubmit, reset } = useForm();
     const apikey = `5a66a63248054df704d2d5ae383fd593`
     const onSubmit = (data) => {
         const url = `https://api.imgbb.com/1/upload?key=${apikey}`
@@ -21,10 +21,11 @@ const AddProduct = () => {
                     const product = {
                         name: data.name,
                         description: data.description,
-                        picture: data.picture,
+                        picture: result.data.url,
                         price: parseInt(data.price),
                         quantity: parseInt(data.quantity)
                     }
+                    console.log(result, ".....................", result.url)
                     fetch("http://localhost:5000/product", {
                         method: "POST",
                         headers: {
@@ -38,6 +39,7 @@ const AddProduct = () => {
                             if (data.insertedId) {
                                 toast.success("Your Product Is Added Successfully")
                             }
+                            reset()
                         })
                 }
             })
