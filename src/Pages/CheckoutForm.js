@@ -1,7 +1,10 @@
 import { CardElement, useElements, useStripe } from "@stripe/react-stripe-js";
 import { useEffect, useState } from "react";
+import { useAuthState } from "react-firebase-hooks/auth";
+import auth from "../firebaseinit";
 
-const CheckoutForm = ({ onSubmit, handleSubmit, newPrice, id }) => {
+const CheckoutForm = ({ newPrice, insertId }) => {
+    const [user] = useAuthState(auth)
     const stripe = useStripe();
     const elements = useElements();
     const [transactionid, setTransactionID] = useState(null)
@@ -58,15 +61,17 @@ const CheckoutForm = ({ onSubmit, handleSubmit, newPrice, id }) => {
         } else {
             setPaymentSuccess("Congrates! Your Payment Is Success")
             setTransactionID(paymentIntent.id)
-            fetch(`http://localhost:5000/products/${id}`, {
-                method: "PUT",
-                headers: {
-                    "content-type": "application/json"
-                },
-                body: JSON.stringify({ transactionid })
-            })
-                .then(res => res.json())
-                .then(data => console.log(data))
+            if (paymentIntent) {
+                fetch(`http://localhost:5000/order/${insertId}`, {
+                    method: "PUT",
+                    headers: {
+                        "content-type": "application/json"
+                    },
+                    body: JSON.stringify({ transactionid: paymentIntent.id })
+                })
+                    .then(res => res.json())
+                    .then(data => console.log(data))
+            }
         }
     };
 
@@ -95,7 +100,7 @@ const CheckoutForm = ({ onSubmit, handleSubmit, newPrice, id }) => {
                     <p>Your Transaction Id : {transactionid}</p>
                 </p>}
             </div>
-            <button onClick={() => handleSubmit(onSubmit)} type="submit" className="btn btn-primary mt-24" disabled={!stripe || !clientSecret}>
+            <button type="submit" className="btn btn-primary mt-24" disabled={!stripe || !clientSecret || transactionid}>
                 Pay
             </button>
         </form>

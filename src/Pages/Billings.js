@@ -3,14 +3,21 @@ import { data } from 'autoprefixer';
 import React, { useEffect, useState } from 'react';
 import { useForm } from "react-hook-form";
 import { useQuery } from 'react-query';
-import { useParams } from 'react-router-dom';
+import { Link, useLocation, useParams } from 'react-router-dom';
 import CheckoutForm from './CheckoutForm';
 import Loading from './Shared/Loading';
 import { loadStripe } from '@stripe/stripe-js';
+import { toast } from 'react-toastify';
+import { useAuthState } from 'react-firebase-hooks/auth';
+import auth from '../firebaseinit';
 
 
 const stripePromise = loadStripe('pk_test_51L0mirGh3CcvB5xE649I2ZRsP8ds0hsUJirzcxky8hA7cfTdTvTdLD2a18T7q27fnC3efjjSHYdruvEOFweezeyc00eH8SOPQO');
 const Billings = () => {
+    const [insertId, setInsertId] = useState(null)
+    const [user] = useAuthState(auth)
+    const location = useLocation()
+    const [show, setShow] = useState(false)
     const [clientSecret, setClientSecret] = useState("");
     const [paymentError, setPaymentError] = useState(null)
     const { register, formState: { errors }, handleSubmit } = useForm();
@@ -36,21 +43,54 @@ const Billings = () => {
 
 
 
-    const onSubmit = (data) => { console.log("this") }
+    const onSubmit = (data) => {
+        const order = {
+            username: data.name,
+            userEmail: data.email,
+            userAddress: data.address,
+            userShippingAddress: data.shippingaddress,
+            userPhone: data.phone,
+            product,
+            pay: '',
+            shift: false,
+        }
+        fetch(`http://localhost:5000/orders/${user?.email}`, {
+            method: "POST",
+            headers: {
+                "content-type": "application/json"
+            },
+            body: JSON.stringify({ order })
+        })
+            .then(res => res.json())
+            .then(data => {
+                console.log(data)
+                setInsertId(data.insertedId)
+                if (data.insertedId) {
+                    toast.success("Your Order Is Confirmed. Pay Now")
+                    setShow(!show)
+
+                }
+
+            })
+
+    }
 
 
     return (
         <div className='flex justify-center gap-8 font-roboto my-32 flex-col lg:flex-row'>
             <div className="bg-slate-100 p-5 rounded-md ">
-                <h2 className='text-2xl font-bold mb-4'>Billing Address</h2>
-                <form onSubmit={handleSubmit(onSubmit)} >
+                <h2 className='text-2xl font-bold mb-4'>{
+                    show ? "Pay Now" : "Billing Address"
+                }
+                </h2>
+                <form onSubmit={handleSubmit(onSubmit)} className={`${show ? "hidden" : "block"}`}>
 
                     <div className='flex items-center justify-center flex-col lg:flex-row gap-5 bg-slate-100'>
                         <div class="form-control w-full">
                             <label class="label">
                                 <span class="label-text">Name</span>
                             </label>
-                            <input id='name' name="name" type="text" placeholder="Type here" class="input input-bordered w-full max-w-xs"
+                            <input id='name' value={user?.displayName} name="name" readOnly type="text" placeholder="Type here" class="input input-bordered w-full max-w-xs capitalize"
                                 {...register("name", {
                                     required: {
                                         value: true,
@@ -66,7 +106,7 @@ const Billings = () => {
                             <label class="label">
                                 <span class="label-text">Email</span>
                             </label>
-                            <input id='email' name="email" type="text" placeholder="Type here" class="input input-bordered w-full max-w-xs"
+                            <input id='email' name="email" value={user?.email} readOnly type="text" placeholder="Type here" class="input input-bordered w-full max-w-xs"
                                 {...register("email", {
                                     required: {
                                         value: true,
@@ -114,23 +154,6 @@ const Billings = () => {
                         </div>
                     </div>
 
-                    <div class="form-control w-full ">
-                        <label class="label">
-                            <span class="label-text">Payable Amount</span>
-                        </label>
-                        <input id='amount' name="amount" readOnly value={`$ ${(product?.price * product?.newQuantity).toFixed(2)}`} type="text" placeholder="Type here" class="input input-bordered w-full max-w-lg focus:outline-none font-bold"
-                            {...register("amount", {
-                                required: {
-                                    value: true,
-                                    message: "Email Required"
-                                }
-                            })}
-                        />
-                        <label class="label">
-                            {errors?.amount?.type === 'required' && <span class="label-text-alt text-red-500 font-bold">{errors?.amount?.message}</span>}
-                        </label>
-                    </div>
-
                     <div class="form-control w-full">
                         <label class="label">
                             <span class="label-text">Shipping Address</span>
@@ -147,16 +170,17 @@ const Billings = () => {
                             {errors?.shippingaddress?.type === 'required' && <span class="label-text-alt text-red-500 font-bold">{errors?.shippingaddress?.message}</span>}
                         </label>
                     </div>
-                    {/* <input type="submit" className='border-2 border-slate-400 w-[18px] h-[18px]' /> */}
+                    <input type="submit" value="Place Order" className='border-2 mt-12 btn-secondary btn border-none rounded-none focus:outline-none w-full' />
                 </form>
-                <div className='my-12'>
+                <div className={`my-12 w-[400px] ${show ? "block" : "hidden"}`}>
+                    <p className='font-roboto mb-4'>You Paying Amount : $ {(product?.price * product?.newQuantity).toFixed(2)}</p>
                     <Elements stripe={stripePromise}>
-                        <CheckoutForm onSubmit={onSubmit} handleSubmit={handleSubmit} newPrice={newPrice} id={id} />
+                        <CheckoutForm onSubmit={onSubmit} handleSubmit={handleSubmit} newPrice={newPrice} insertId={insertId} />
                     </Elements>
                 </div>
             </div>
 
-            <div className=''>
+            <div className={`${show ? "hidden" : "block"}`}>
                 <div className='flex items-center justify-center gap-4 flex-col'>
                     <div className='bg-slate-300 rounded-md'>
                         <img className='w-full ' src={product?.picture} alt="product-pic" />
