@@ -9,7 +9,7 @@ import Loading from '../Shared/Loading';
 const Myorder = () => {
     const [user] = useAuthState(auth)
     const { isLoading, data: orders, refetch } = useQuery('orders', () =>
-        fetch(`http://localhost:5000/userorders/${user?.email}`, {
+        fetch(`https://innovus-client.herokuapp.com/userorders/${user?.email}`, {
             method: "GET",
             headers: {
                 "authorization": `Bearer ${(localStorage.getItem("accessToken"))}`

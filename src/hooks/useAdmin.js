@@ -6,10 +6,10 @@ const useAdmin = () => {
     const [user] = useAuthState(auth)
     const [admin, setAdmin] = useState("")
     useEffect(() => {
-        fetch(`http://localhost:5000/admin/users/${user?.email}`, {
+        fetch(`https://innovus-client.herokuapp.com/admin/users/${user?.email}`, {
             method: "GET",
             headers: {
-                "authorization": `Bearer ${localStorage.getItem("accessToken")}`
+                "authorization": `Bearer ${(localStorage.getItem("accessToken"))}`
             }
         })
             .then(res => res.json())

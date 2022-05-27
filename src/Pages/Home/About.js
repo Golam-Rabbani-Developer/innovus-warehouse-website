@@ -4,7 +4,7 @@ import PrimaryBtn from '../Shared/PrimaryBtn/PrimaryBtn';
 const About = () => {
     return (
         <div>
-            <div class="card flex w-96 md:w-11/12 mx-auto flex-col md:flex-row my-32 justify-center lg:px-40">
+            <div class="card flex w-96 md:w-11/12 mx-auto flex-col md:flex-row mt-32 mb-52 justify-center lg:px-40">
                 <div className='bg-none bg-primary p-8 font-oswald  md:text-right rounded-md'>
                     <h2 className="lg:mt-12">Who we are</h2>
                     <h2 className="text-4xl font-bold font-oswald">Quality & Itegrity <br /> Service Agency</h2>

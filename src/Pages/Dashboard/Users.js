@@ -6,7 +6,7 @@ import Loading from '../Shared/Loading';
 
 const Users = () => {
     const { isLoading, data: users, refetch } = useQuery('users', () =>
-        fetch('http://localhost:5000/users').then(res =>
+        fetch('https://innovus-client.herokuapp.com/users').then(res =>
             res.json()
         )
     )
@@ -16,12 +16,12 @@ const Users = () => {
     }
 
     const handleAdmin = (email) => {
-        const url = `http://localhost:5000/admin/user/${email}`
+        const url = `https://innovus-client.herokuapp.com/admin/user/${email}`
         fetch(url, {
             method: "PUT",
             headers: {
                 'content-type': 'application/json',
-                "authorization": `Bearer ${localStorage.getItem("accessToken")}`
+                "authorization": `Bearer ${(localStorage.getItem("accessToken"))}`
             }
         })
             .then(res => res.json())
@@ -38,7 +38,7 @@ const Users = () => {
     }
 
     return (
-        <div className='min-h-screen'>
+        <div className='min-h-screen mt-48'>
             <div class="overflow-x-auto">
                 <table class="table w-full">
                     <thead>

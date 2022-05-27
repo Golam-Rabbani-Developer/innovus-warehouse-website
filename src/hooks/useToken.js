@@ -5,7 +5,7 @@ const useToken = (user) => {
     const email = user?.user?.email;
 
     useEffect(() => {
-        fetch(`http://localhost:5000/users/${email}`, {
+        fetch(`https://innovus-client.herokuapp.com/users/${email}`, {
             method: "PUT",
             headers: {
                 "content-type": "application/json"

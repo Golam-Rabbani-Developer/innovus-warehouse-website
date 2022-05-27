@@ -5,7 +5,7 @@ const DeleteModal = ({ product, setModalProduct, refetch }) => {
     const { name } = product;
 
     const handleDeleteBtn = (id) => {
-        fetch(`http://localhost:5000/product/${id}`, {
+        fetch(`https://innovus-client.herokuapp.com/product/${id}`, {
             method: "DELETE",
             headers: {
                 'content-type': 'application/json',

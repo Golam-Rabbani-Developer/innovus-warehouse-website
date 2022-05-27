@@ -23,7 +23,7 @@ const Billings = () => {
     const { register, formState: { errors }, handleSubmit, reset } = useForm();
     const { id } = useParams()
     const { isLoading, data: product, refetch } = useQuery('product', () =>
-        fetch(`http://localhost:5000/product/${id}`, {
+        fetch(`https://innovus-client.herokuapp.com/product/${id}`, {
             method: "GET",
             headers: {
                 "authorization": `Bearer ${(localStorage.getItem("accessToken"))}`
@@ -54,7 +54,7 @@ const Billings = () => {
             pay: '',
             shift: false,
         }
-        fetch(`http://localhost:5000/orders/${user?.email}`, {
+        fetch(`https://innovus-client.herokuapp.com/orders/${user?.email}`, {
             method: "POST",
             headers: {
                 "content-type": "application/json"

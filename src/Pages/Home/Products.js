@@ -1,11 +1,25 @@
-import React, { useState } from 'react';
-import useProducts from '../../hooks/useProducts';
+import React, { memo } from 'react';
+import { useQuery } from 'react-query';
+import { Link } from 'react-router-dom';
+import Loading from '../Shared/Loading';
+import PrimaryBtn from '../Shared/PrimaryBtn/PrimaryBtn';
 import Product from './Product';
 
 const Products = () => {
-    const url = `http://localhost:5000/products`
-    const { products } = useProducts(url)
-    console.log(products)
+    const { isLoading, data: products } = useQuery('products', () =>
+        fetch(`https://innovus-client.herokuapp.com/products`, {
+            method: "GET",
+            headers: {
+                "content-type": "application/json",
+                "authorization": `Bearer ${localStorage.getItem("accessToken")}`
+            }
+        }).then(res =>
+            res.json()
+        )
+    )
+    if (isLoading) {
+        return <Loading type="spokes" color="black"></Loading>
+    }
     return (
         <div className='mt-64  mb-40 px-10 lg:px-40 relative'>
             <div className='flex flex-col md:flex-row items-start lg:items-center justify-between font-roboto gap-5 lg:gap-12'>
@@ -18,14 +32,19 @@ const Products = () => {
             </div>
             <div className='grid grid-cols-1 lg:grid-cols-3 gap-5 mt-10'>
                 {
-                    products.slice(0, 6).map(product => <Product
+                    products?.slice(0, 6).map(product => <Product
                         key={product._id}
                         product={product}
                     ></Product>)
                 }
             </div>
+            <div className='w-[200px] mx-auto mt-12'>
+                <Link to="/shop">
+                    <PrimaryBtn>Explore More</PrimaryBtn>
+                </Link>
+            </div>
         </div>
     );
 };
 
-export default Products;
+export default memo(Products);

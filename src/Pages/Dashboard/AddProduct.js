@@ -26,7 +26,7 @@ const AddProduct = () => {
                         quantity: parseInt(data.quantity)
                     }
                     console.log(result, ".....................", result.url)
-                    fetch("http://localhost:5000/product", {
+                    fetch("https://innovus-client.herokuapp.com/product", {
                         method: "POST",
                         headers: {
                             'content-type': "application/json",
@@ -46,7 +46,7 @@ const AddProduct = () => {
 
     }
     return (
-        <div className='min-h-screen mt-32'>
+        <div className='min-h-screen mt-48'>
             <div className={`border-2 border-slate-300 p-5 rounded-md`}>
                 <h2 className='font-oswald text-xl text-center font-bold my-3'>Add Another Product</h2>
                 <form onSubmit={handleSubmit(onSubmit)} className='w-full mx-auto'>

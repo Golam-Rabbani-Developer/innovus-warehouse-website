@@ -7,7 +7,7 @@ import DeleteModal from './DeleteModal';
 const Allproducts = () => {
     const [modalProduct, setModalProduct] = useState(null)
     const { isLoading, data: products, refetch } = useQuery('products', () =>
-        fetch('http://localhost:5000/products', {
+        fetch('https://innovus-client.herokuapp.com/products', {
             method: "GET",
             headers: {
                 "authorization": `Bearer ${localStorage.getItem("accessToken")}`
@@ -21,7 +21,7 @@ const Allproducts = () => {
     }
 
     return (
-        <div className='my-32 min-h-screen'>
+        <div className='mt-48 min-h-screen'>
             <div class="overflow-x-auto">
                 <table class="table w-full">
                     <thead>

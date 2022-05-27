@@ -13,7 +13,7 @@ const Myprofile = () => {
     const formData = new FormData();
     const [updateEmail, updating] = useUpdateEmail(auth);
     const { isLoading, data: updateUser, refetch } = useQuery('updateduser', () =>
-        fetch(`http://localhost:5000/user/${user?.email}`).then(res =>
+        fetch(`https://innovus-client.herokuapp.com/user/${user?.email}`).then(res =>
             res.json()
         )
     )
@@ -42,7 +42,7 @@ const Myprofile = () => {
                         picture: result.data.url,
                     }
 
-                    fetch(`http://localhost:5000/user/${email}`, {
+                    fetch(`https://innovus-client.herokuapp.com/user/${email}`, {
                         method: "PUT",
                         headers: {
                             "content-type": "application/json"
@@ -53,9 +53,9 @@ const Myprofile = () => {
                         .then(data => {
                             if (data.modifiedCount > 0) {
                                 refetch()
-
                                 toast("Your Profile Is Updated Now")
                                 reset()
+                                setShow(!show)
                             }
                         })
                 }
@@ -63,8 +63,8 @@ const Myprofile = () => {
     }
 
     return (
-        <div className='grid grid-cols-1 lg:grid-cols-2 gap-4 mt-32 lg:mt-0'>
-            <div class="card bg-base-100 w-[300px]  shadow-xl">
+        <div className='grid grid-cols-1 lg:grid-cols-2 gap-4 my-32 lg:mt-0 min-h-screen'>
+            <div class={`mt-40 w-[400px] h-[300px] lg:mt-56 flex items-center flex-col justify-center shadow-md ${show ? "hidden" : "block"}`}>
                 <div className="avatar">
                     <div class="w-24 mx-auto mt-4 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2">
                         <img src={updateUser?.picture || user?.photoURL} className="rounded-xl" alt="Images" />
@@ -79,7 +79,7 @@ const Myprofile = () => {
                     </div>
                 </div>
             </div>
-            <div className={`w-[300px] border-2 border-slate-300 p-5 rounded-md ${show ? "block" : "hidden"}`}>
+            <div className={`w-[300px] border-2 border-slate-300 p-5 rounded-md mt-32 lg:relative lg:top-7 ${show ? "block" : "hidden"}`}>
                 <h2 className='font-oswald text-xl text-center font-bold my-3'>Update your Profile</h2>
                 <form onSubmit={handleSubmit(onSubmit)} className='w-full mx-auto'>
                     <div class="form-control mt-[-30px] w-full ">

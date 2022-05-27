@@ -20,6 +20,7 @@ const Service = ({ service, index }) => {
 
                 <h2 class="card-title font-oswald">{name}</h2>
                 <p>{text}</p>
+                <button className="btn btn-link text-secondary">Explore It ➞</button>
 
             </div>
         </div>

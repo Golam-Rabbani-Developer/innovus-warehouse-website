@@ -45,8 +45,8 @@ const Login = () => {
     }
     return (
         <div className='flex items-center justify-center  mx-auto gap-12 min-h-screen'>
-            <div className="order-2 p-5 w-full bg-[#132B83] lg:m-0 min-h-screen">
-                <h2 className='text-2xl text-slate-100 font-bold font-serif text-center mt-4 '>InnoVus</h2>
+            <div className="order-2 p-5 w-full bg-[#132B83] lg:m-0 min-h-screen py-24">
+                <h2 className='text-2xl text-slate-100 font-bold text-center mt-4 font-satisfy uppercase'>In<span className='text-red-500'>noV</span>us</h2>
 
                 <p className='text-2xl text-slate-100 font-bold text-center font-oswald'>Login to Your Account</p>
                 <form onSubmit={handleSubmit(onSubmit)} className='w-8/12 mx-auto'>

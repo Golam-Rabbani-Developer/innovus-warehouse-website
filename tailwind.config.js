@@ -6,7 +6,8 @@ module.exports = {
     extend: {
       fontFamily: {
         'roboto': ['Roboto', 'sans-serif'],
-        'oswald': ['Noto Serif Display', 'serif']
+        'oswald': ['Noto Serif Display', 'serif'],
+        'satisfy': ['Satisfy', 'cursive'],
       },
     },
   },
@@ -14,7 +15,8 @@ module.exports = {
     themes: [
       {
         mytheme: {
-          primary: "#FAC012",
+          primary: "#FFAA01",
+          // primary: "#FAC012",
           secondary: "#04192B",
           accent: "#D66309",
           neutral: "#3d4451",

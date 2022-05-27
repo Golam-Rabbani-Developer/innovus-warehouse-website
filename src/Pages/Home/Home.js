@@ -14,7 +14,6 @@ import Workers from './Workers';
 const Home = () => {
     return (
         <div>
-            <Header></Header>
             <Banner></Banner>
             <About></About>
             <Services></Services>

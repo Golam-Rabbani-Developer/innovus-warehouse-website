@@ -1,0 +1,62 @@
+[
+    {
+        "id": "625d5a2d2130a22339744def",
+        "picture": "https://i.ibb.co/rM7hsMp/js-new-removebg-preview.png",
+        "name": "Javascript (ES6 +)",
+        "number": "92"
+    },
+    {
+        "id": "625d5a2d2303387ca2fdf4e6",
+        "picture": "https://i.ibb.co/PtjwT68/html-removebg-preview.png",
+        "name": "HTML (5)",
+        "number": "98"
+    },
+    {
+        "id": "625d5a2ddf19ffa878f496dc",
+        "picture": "https://i.ibb.co/bbrHMLq/firebase-removebg-preview.png",
+        "name": "Firebase",
+        "number": "90"
+    },
+    {
+        "id": "625d5a2d4815a6f3aed894ba",
+        "picture": "https://i.ibb.co/DL4JLk5/css-removebg-preview-1.png",
+        "name": "CSS (3)",
+        "number": "90"
+    },
+    {
+        "id": "625d5a2df9708e1f0c9c2aea",
+        "picture": "https://i.ibb.co/gw9M76T/image-removebg-preview-12.png",
+        "name": "Bootstarp (5) CSS",
+        "number": "95"
+    },
+    {
+        "id": "625d5a2d9cf69667b30ffaa4",
+        "picture": "https://i.ibb.co/h7gkbkc/image-removebg-preview-13.png",
+        "name": "SASS",
+        "number": "93"
+    },
+    {
+        "id": "625d5a2deb9095464e3018fe",
+        "picture": "https://i.ibb.co/KsBn35m/image-removebg-preview-14.png",
+        "name": "Figma Design",
+        "number": "90"
+    },
+    {
+        "id": "625d5a2d865499dfc41f3f8b",
+        "picture": "https://i.ibb.co/x8ZFysr/react-removebg-preview.png",
+        "name": "ReactJS",
+        "number": "90"
+    },
+    {
+        "id": "625d5a2d824d9aaee294efdf",
+        "picture": "https://i.ibb.co/xs231nS/tailwind-removebg-preview.png",
+        "name": "Tailwind CSS",
+        "number": "94"
+    },
+    {
+        "id": "625d5a2dc02fd83c121247dd",
+        "picture": "https://i.ibb.co/rFS5Yk6/git-removebg-preview.png",
+        "name": "Git Management",
+        "number": "91"
+    }
+]

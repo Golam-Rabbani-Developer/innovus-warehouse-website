@@ -11,7 +11,7 @@ const Addreview = () => {
     const [user] = useAuthState(auth)
     const { register, formState: { errors }, handleSubmit, reset } = useForm();
     const { isLoading, data: updateUser, refetch } = useQuery('updateduser', () =>
-        fetch(`http://localhost:5000/user/${user?.email}`).then(res =>
+        fetch(`https://innovus-client.herokuapp.com/user/${user?.email}`).then(res =>
             res.json()
         )
     )
@@ -41,7 +41,7 @@ const Addreview = () => {
                         email: updateUser?.email,
                         picture: result.data.url,
                     }
-                    fetch('http://localhost:5000/review', {
+                    fetch('https://innovus-client.herokuapp.com/review', {
                         method: "POST",
                         headers: {
                             "content-type": "application/json"

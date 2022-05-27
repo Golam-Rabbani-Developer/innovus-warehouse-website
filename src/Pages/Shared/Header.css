@@ -1,0 +1,52 @@
+.home {
+    background: none;
+    color: white;
+    position: absolute;
+    top: 0;
+    left: 0;
+    overflow-x: hidden;
+    transition: all 1.1s;
+}
+
+
+
+
+.others {
+    background-color: #04192B;
+    transition: all 0.7s;
+}
+
+.home_scrolled {
+    background-color: black;
+    position: sticky;
+    top: -20px;
+    border-bottom: 2px solid orange;
+}
+
+.social-menu {
+    transition: all 0.8s;
+}
+
+.link_active {
+    position: relative;
+    color: #FFAA01;
+    font-weight: bolder;
+}
+
+.link_nav::before {
+    content: "";
+    background-color: rgb(232, 201, 201);
+    width: 0%;
+    margin: 0 auto;
+    height: 4px;
+    border-radius: 2px;
+    position: absolute;
+    bottom: 0;
+    left: 17%;
+    transition: all 0.7s;
+}
+
+.link_nav:hover::before {
+    display: block;
+    width: 70%;
+}

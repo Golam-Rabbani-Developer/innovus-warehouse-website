@@ -5,7 +5,7 @@ import Loading from '../Shared/Loading';
 
 const AllOrders = () => {
     const { isLoading, data: orders, refetch } = useQuery('orders', () =>
-        fetch('http://localhost:5000/orders').then(res =>
+        fetch('https://innovus-client.herokuapp.com/orders').then(res =>
             res.json()
         )
     )
@@ -16,7 +16,7 @@ const AllOrders = () => {
 
     // /shift/orders/:id
     const handleShiftBtn = (id) => {
-        fetch(`http://localhost:5000/shift/orders/${id}`, {
+        fetch(`https://innovus-client.herokuapp.com/shift/orders/${id}`, {
             method: "PUT",
             headers: {
                 "content-type": "application/json",
@@ -32,7 +32,7 @@ const AllOrders = () => {
             })
     }
     const handledeleteBtn = (id) => {
-        fetch(`http://localhost:5000/order/${id}`, {
+        fetch(`https://innovus-client.herokuapp.com/order/${id}`, {
             method: "DELETE",
             headers: {
                 "content-type": "application/json",

@@ -12,7 +12,7 @@ const CheckoutForm = ({ newPrice, insertId }) => {
     const [paymentError, setPaymentError] = useState(null)
     const [paymentSuccess, setPaymentSuccess] = useState(null)
     useEffect(() => {
-        fetch("http://localhost:5000/create-payment-intent", {
+        fetch("https://innovus-client.herokuapp.com/create-payment-intent", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({ newPrice }),
@@ -62,7 +62,7 @@ const CheckoutForm = ({ newPrice, insertId }) => {
             setPaymentSuccess("Congrates! Your Payment Is Success")
             setTransactionID(paymentIntent.id)
             if (paymentIntent) {
-                fetch(`http://localhost:5000/order/${insertId}`, {
+                fetch(`https://innovus-client.herokuapp.com/order/${insertId}`, {
                     method: "PUT",
                     headers: {
                         "content-type": "application/json"

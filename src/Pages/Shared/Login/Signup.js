@@ -4,7 +4,7 @@ import { MdAttachEmail } from "react-icons/md"
 import { BiUserVoice } from 'react-icons/bi'
 import { BsGoogle } from 'react-icons/bs'
 import { useCreateUserWithEmailAndPassword, useSignInWithGoogle, useUpdateProfile } from 'react-firebase-hooks/auth';
-import { useLocation, useNavigate } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import auth from '../../../firebaseinit';
 import Loading from '../Loading';
 import useToken from '../../../hooks/useToken';
@@ -47,8 +47,8 @@ const Signup = () => {
 
     return (
         <div className='flex items-center justify-center  mx-auto gap-12 min-h-screen'>
-            <div className="order-2 p-5 w-full bg-[#132B83] lg:m-0 min-h-screen">
-                <h2 className='text-2xl text-slate-100 font-bold font-serif text-center mt-4 '>InnoVus</h2>
+            <div className="order-2 p-5 w-full bg-[#132B83] lg:m-0 min-h-screen py-28">
+                <h2 className='text-2xl text-slate-100 font-bold text-center mt-4 font-satisfy uppercase'>In<span className='text-red-500'>noV</span>us</h2>
 
                 <p className='text-2xl text-slate-100 font-bold text-center font-oswald'>Register Your Account</p>
                 <form onSubmit={handleSubmit(onSubmit)} className='w-8/12 mx-auto'>
@@ -112,6 +112,7 @@ const Signup = () => {
                         {signInError}
                     </div>
                     <input type="submit" className='border-none opacity-100 btn btn-primary block  bg-primary max-w-xs w-full rounded-none text-slate-200 hover:opacity-80' />
+                    <p className='text-white mt-1 text-center'>ALready registered ? <Link to="/login" className="btn-link">Login Now</Link></p>
                 </form>
                 <div className='font-roboto text-slate-50 w-8/12 mx-auto'>
 
