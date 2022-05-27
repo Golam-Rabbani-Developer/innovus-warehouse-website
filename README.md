@@ -1,6 +1,6 @@
 # Welcome to Innovus
 
-[See live site here] (https://innovus-9d152.web.app)
+[See live site here (Innovus)](https://innovus-9d152.web.app/)
 
 ## Project Description
 
