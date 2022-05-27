@@ -16,6 +16,7 @@ const Services = () => {
             .then(res => res.json())
             .then(data => setServices(data))
     }, [])
+    const newServices = services?.splice(0, 6)
     return (
         <div className={`${location.pathname === "/services" || "flex flex-col lg:flex-row  justify-center px-10 lg:px-32  gap-5"}`}>
             {location.pathname === "/services" ||
@@ -28,7 +29,7 @@ const Services = () => {
                 location.pathname === "/" || location.pathname === "/home" ?
                     <div className='grid grid-cols-1 lg:grid-cols-3'>
 
-                        {services.slice(0, 6)?.map((service, index) => <Service
+                        {newServices?.map((service, index) => <Service
                             key={service._id}
                             service={service}
                             index={index}

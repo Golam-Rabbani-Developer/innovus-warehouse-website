@@ -20,6 +20,7 @@ const Products = () => {
     if (isLoading) {
         return <Loading type="spokes" color="black"></Loading>
     }
+    const newProducts = products.splice(0, 6);
     return (
         <div className='mt-64  mb-40 px-10 lg:px-40 relative'>
             <div className='flex flex-col md:flex-row items-start lg:items-center justify-between font-roboto gap-5 lg:gap-12'>
@@ -32,7 +33,7 @@ const Products = () => {
             </div>
             <div className='grid grid-cols-1 lg:grid-cols-3 gap-5 mt-10'>
                 {
-                    products?.slice(0, 6).map(product => <Product
+                    newProducts?.map(product => <Product
                         key={product._id}
                         product={product}
                     ></Product>)

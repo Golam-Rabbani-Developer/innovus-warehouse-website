@@ -34,7 +34,7 @@ const Reviews = () => {
             }
             <div className='flex flex-col lg:flex-row items-center justify-around overflow-x-hidden gap-5 mt-10'>
                 {
-                    reviews.slice(0, number).map(review => <Review
+                    reviews?.splice(0, number).map(review => <Review
                         key={review._id}
                         review={review}
                     ></Review>)
