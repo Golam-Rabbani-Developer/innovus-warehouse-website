@@ -50,8 +50,7 @@ const Addreview = () => {
                     })
                         .then(res => res.json())
                         .then(data => {
-                            console.log(data)
-                            if (data.modifiedCount > 0) {
+                            if (data) {
                                 toast("Thanks For Placing Your Review")
                                 reset()
                             }
