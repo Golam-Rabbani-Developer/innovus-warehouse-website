@@ -9,10 +9,9 @@ const Reviews = () => {
     useEffect(() => {
         fetch(`https://innovus-client.herokuapp.com/reviews`)
             .then(res => res.json())
-            .then(data => setReviews(data.reverse()))
+            .then(data => setReviews(data))
     }, [])
 
-    console.log(reviews)
     return (
 
         <div className={`${location.pathname === "/reviews" ? "mb-40 px-10 lg:px-40 mt-12  " : "mt-64  mb-40 px-10 lg:px-40 relative"} `}>
@@ -34,7 +33,7 @@ const Reviews = () => {
             }
             <div className='flex flex-col lg:flex-row items-center justify-around overflow-x-hidden gap-5 mt-10'>
                 {
-                    reviews?.splice(0, number).map(review => <Review
+                    reviews?.slice(0, 3).reverse().map(review => <Review
                         key={review._id}
                         review={review}
                     ></Review>)
