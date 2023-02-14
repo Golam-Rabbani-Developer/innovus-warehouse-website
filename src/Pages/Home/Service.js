@@ -8,8 +8,8 @@ import { CgSmartHomeWashMachine } from "react-icons/cg"
 const Service = ({ service, index }) => {
     const { name, text } = service;
     return (
-        <div class="card bg-base-100  w-50 mt-10 border-2 border-slate-400 lg:border-0  lg:mt-0">
-            <div class="card-body">
+        <div className="card bg-base-100  w-50 mt-10 border-2 border-slate-400 lg:border-0  lg:mt-0">
+            <div className="card-body">
                 {index === 0 && <span className='d-inline bg-secondary p-4 w-[60px] rounded-full'><GiElectricalResistance className='text-2xl text-white' /></span>}
                 {index === 1 && <span className='d-inline bg-secondary p-4 w-[60px] rounded-full'><CgSmartHomeWashMachine className='text-2xl text-white' /></span>}
                 {index === 2 || index === 3 ? <span className='d-inline bg-secondary p-4 w-[60px] rounded-full'><FcElectricalSensor className='text-2xl text-white' /></span> : ""}
@@ -18,7 +18,7 @@ const Service = ({ service, index }) => {
                 {index === 6 ? <span className='d-inline bg-secondary p-4 w-[60px] rounded-full'><CgSmartHomeWashMachine className='text-2xl text-white' /></span> : ''}
                 {index === 7 || index === 8 || index === 9 ? <span className='d-inline bg-secondary p-4 w-[60px] rounded-full'><SiBandrautomation className='text-2xl text-white' /></span> : ''}
 
-                <h2 class="card-title font-oswald">{name}</h2>
+                <h2 className="card-title font-oswald">{name}</h2>
                 <p>{text}</p>
                 <button className="btn btn-link text-secondary">Explore It ➞</button>
 

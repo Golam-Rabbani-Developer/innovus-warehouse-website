@@ -7,7 +7,7 @@ const Reviews = () => {
     const [reviews, setReviews] = useState([])
     const location = useLocation()
     useEffect(() => {
-        fetch(`https://innovus-client.herokuapp.com/reviews`)
+        fetch(`https://proud-lime-bluefish.cyclic.app/reviews`)
             .then(res => res.json())
             .then(data => setReviews(data))
     }, [])

@@ -13,7 +13,7 @@ const Myprofile = () => {
     const formData = new FormData();
     const [updateEmail, updating] = useUpdateEmail(auth);
     const { isLoading, data: updateUser, refetch } = useQuery('updateduser', () =>
-        fetch(`https://innovus-client.herokuapp.com/user/${user?.email}`).then(res =>
+        fetch(`https://proud-lime-bluefish.cyclic.app/user/${user?.email}`).then(res =>
             res.json()
         )
     )
@@ -42,7 +42,7 @@ const Myprofile = () => {
                         picture: result.data.url,
                     }
 
-                    fetch(`https://innovus-client.herokuapp.com/user/${email}`, {
+                    fetch(`https://proud-lime-bluefish.cyclic.app/user/${email}`, {
                         method: "PUT",
                         headers: {
                             "content-type": "application/json"
@@ -64,30 +64,30 @@ const Myprofile = () => {
 
     return (
         <div className='grid grid-cols-1 lg:grid-cols-2 gap-4 my-32 lg:mt-0 min-h-screen'>
-            <div class={`mt-40 w-[400px] h-[300px] lg:mt-56 flex items-center flex-col justify-center shadow-md ${show ? "hidden" : "block"}`}>
+            <div className={`mt-40 w-[400px] h-[300px] lg:mt-56 flex items-center flex-col justify-center shadow-md ${show ? "hidden" : "block"}`}>
                 <div className="avatar">
-                    <div class="w-24 mx-auto mt-4 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2">
+                    <div className="w-24 mx-auto mt-4 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2">
                         <img src={updateUser?.picture || user?.photoURL} className="rounded-xl" alt="Images" />
                     </div>
                 </div>
 
 
-                <div class="card-body items-center text-center">
-                    <h2 class="card-title capitalize">{updateUser?.name || user?.displayName}</h2>
-                    <div class="card-actions">
-                        <button onClick={() => setShow(!show)} class={`btn btn-primary ${show ? "hidden" : "block"}`}>Update profile</button>
+                <div className="card-body items-center text-center">
+                    <h2 className="card-title capitalize">{updateUser?.name || user?.displayName}</h2>
+                    <div className="card-actions">
+                        <button onClick={() => setShow(!show)} className={`btn btn-primary ${show ? "hidden" : "block"}`}>Update profile</button>
                     </div>
                 </div>
             </div>
             <div className={`w-[300px] border-2 border-slate-300 p-5 rounded-md mt-32 lg:relative lg:top-7 ${show ? "block" : "hidden"}`}>
                 <h2 className='font-oswald text-xl text-center font-bold my-3'>Update your Profile</h2>
                 <form onSubmit={handleSubmit(onSubmit)} className='w-full mx-auto'>
-                    <div class="form-control mt-[-30px] w-full ">
-                        <label class="label relative top-7">
-                            <span class="label-text  font-bold ">Name</span>
+                    <div className="form-control mt-[-30px] w-full ">
+                        <label className="label relative top-7">
+                            <span className="label-text  font-bold ">Name</span>
                         </label>
                         <input type="text" />
-                        <input id='name' name="name" type="name" placeholder="Your name" class="input input-bordered  bg-slate-200  w-full  rounded-none text-center focus:outline-primary"
+                        <input id='name' name="name" type="name" placeholder="Your name" className="input input-bordered  bg-slate-200  w-full  rounded-none text-center focus:outline-primary"
                             {...register("name", {
                                 required: {
                                     value: true,
@@ -95,17 +95,17 @@ const Myprofile = () => {
                                 }
                             })}
                         />
-                        <label class="label">
-                            {errors?.name?.type === 'required' && <span class="label-text-alt text-red-400 font-bold">{errors?.name?.message}</span>}
+                        <label className="label">
+                            {errors?.name?.type === 'required' && <span className="label-text-alt text-red-400 font-bold">{errors?.name?.message}</span>}
                         </label>
                     </div>
 
-                    <div class="form-control w-full ">
-                        <label class="label ">
-                            <span class="label-text   font-bold">Email</span>
+                    <div className="form-control w-full ">
+                        <label className="label ">
+                            <span className="label-text   font-bold">Email</span>
                         </label>
 
-                        <input id='email' name="email" type="text" placeholder="Your Email" class="input input-bordered  bg-slate-200  w-full max-w-xs rounded-none text-center focus:outline-primary"
+                        <input id='email' name="email" type="text" placeholder="Your Email" className="input input-bordered  bg-slate-200  w-full max-w-xs rounded-none text-center focus:outline-primary"
                             {...register("email", {
                                 required: {
                                     value: true,
@@ -113,16 +113,16 @@ const Myprofile = () => {
                                 }
                             })}
                         />
-                        <label class="label">
-                            {errors?.email?.type === 'required' && <span class="label-text-alt text-red-400 font-bold">{errors?.email?.message}</span>}
+                        <label className="label">
+                            {errors?.email?.type === 'required' && <span className="label-text-alt text-red-400 font-bold">{errors?.email?.message}</span>}
                         </label>
                     </div>
-                    <div class="form-control w-full">
-                        <label class="label ">
-                            <span class="label-text   font-bold">Address</span>
+                    <div className="form-control w-full">
+                        <label className="label ">
+                            <span className="label-text   font-bold">Address</span>
                         </label>
 
-                        <input id='address' name="address" type="text" placeholder="Your address" class="input input-bordered  bg-slate-200  w-full max-w-xs rounded-none text-center focus:outline-primary"
+                        <input id='address' name="address" type="text" placeholder="Your address" className="input input-bordered  bg-slate-200  w-full max-w-xs rounded-none text-center focus:outline-primary"
                             {...register("address", {
                                 required: {
                                     value: true,
@@ -130,16 +130,16 @@ const Myprofile = () => {
                                 }
                             })}
                         />
-                        <label class="label">
-                            {errors?.address?.type === 'required' && <span class="label-text-alt text-red-400 font-bold">{errors?.address?.message}</span>}
+                        <label className="label">
+                            {errors?.address?.type === 'required' && <span className="label-text-alt text-red-400 font-bold">{errors?.address?.message}</span>}
                         </label>
                     </div>
-                    <div class="form-control w-full ">
-                        <label class="label ">
-                            <span class="label-text   font-bold">Image</span>
+                    <div className="form-control w-full ">
+                        <label className="label ">
+                            <span className="label-text   font-bold">Image</span>
                         </label>
 
-                        <input id='image' name="image" type="file" placeholder="Your image" class="input input-bordered  bg-slate-200  w-full max-w-xs rounded-none text-center focus:outline-primary"
+                        <input id='image' name="image" type="file" placeholder="Your image" className="input input-bordered  bg-slate-200  w-full max-w-xs rounded-none text-center focus:outline-primary"
                             {...register("file", {
                                 required: {
                                     value: true,
@@ -147,8 +147,8 @@ const Myprofile = () => {
                                 }
                             })}
                         />
-                        <label class="label">
-                            {errors?.image?.type === 'required' && <span class="label-text-alt text-red-400 font-bold">{errors?.image?.message}</span>}
+                        <label className="label">
+                            {errors?.image?.type === 'required' && <span className="label-text-alt text-red-400 font-bold">{errors?.image?.message}</span>}
                         </label>
                     </div>
 

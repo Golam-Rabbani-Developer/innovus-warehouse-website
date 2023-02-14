@@ -21,7 +21,7 @@ const Footer = () => {
     </div>
     return (
         <div className='bg-secondary lg:px-20 text-white'>
-            <footer class="footer p-10  text-white items-center justify-between">
+            <footer className="footer p-10  text-white items-center justify-between">
                 <div >
                     <h2 className='font-oswald font-bold text-2xl '>Innovus</h2>
                     <p>Over 24 years experience and <br /> knowledge of international industrial systems, <br /> dedicated to provide the best economical <br /> solutions to our valued customers. <br /> We Won Many Factory Awards and <br /> Ceritificates Since 2001-2016</p>
@@ -29,27 +29,27 @@ const Footer = () => {
                 </div>
 
                 <div className='lg:text-center'>
-                    <span class="footer-title ">Services</span>
-                    <a class="link link-hover">  Bridge Construction</a>
-                    <a class="link link-hover">Chemical Research</a>
-                    <a class="link link-hover">Petroleum and Gas</a>
-                    <a class="link link-hover">Mechanical Engineering</a>
+                    <span className="footer-title ">Services</span>
+                    <a className="link link-hover">  Bridge Construction</a>
+                    <a className="link link-hover">Chemical Research</a>
+                    <a className="link link-hover">Petroleum and Gas</a>
+                    <a className="link link-hover">Mechanical Engineering</a>
                 </div>
                 <div className='lg:text-center'>
-                    <span class="footer-title">Company</span>
-                    <a class="link link-hover">About us</a>
-                    <a class="link link-hover">Contact</a>
-                    <a class="link link-hover">Jobs</a>
-                    <a class="link link-hover">Press kit</a>
+                    <span className="footer-title">Company</span>
+                    <a className="link link-hover">About us</a>
+                    <a className="link link-hover">Contact</a>
+                    <a className="link link-hover">Jobs</a>
+                    <a className="link link-hover">Press kit</a>
                 </div>
                 <div className='lg:text-center'>
-                    <span class="footer-title">Legal</span>
-                    <a class="link link-hover">Terms of use</a>
-                    <a class="link link-hover">Privacy policy</a>
-                    <a class="link link-hover">Cookie policy</a>
+                    <span className="footer-title">Legal</span>
+                    <a className="link link-hover">Terms of use</a>
+                    <a className="link link-hover">Privacy policy</a>
+                    <a className="link link-hover">Cookie policy</a>
                 </div>
                 <div>
-                    <span class="footer-title ">Contact us</span>
+                    <span className="footer-title ">Contact us</span>
                     {
                         connect
                     }

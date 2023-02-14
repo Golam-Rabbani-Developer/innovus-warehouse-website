@@ -6,7 +6,7 @@ import Loading from '../Shared/Loading';
 
 const Users = () => {
     const { isLoading, data: users, refetch } = useQuery('users', () =>
-        fetch('https://innovus-client.herokuapp.com/users').then(res =>
+        fetch('https://proud-lime-bluefish.cyclic.app/users').then(res =>
             res.json()
         )
     )
@@ -16,7 +16,7 @@ const Users = () => {
     }
 
     const handleAdmin = (email) => {
-        const url = `https://innovus-client.herokuapp.com/admin/user/${email}`
+        const url = `https://proud-lime-bluefish.cyclic.app/admin/user/${email}`
         fetch(url, {
             method: "PUT",
             headers: {
@@ -39,8 +39,8 @@ const Users = () => {
 
     return (
         <div className='min-h-screen mt-48'>
-            <div class="overflow-x-auto">
-                <table class="table w-full">
+            <div className="overflow-x-auto">
+                <table className="table w-full">
                     <thead>
                         <tr>
                             <th>S/L No</th>

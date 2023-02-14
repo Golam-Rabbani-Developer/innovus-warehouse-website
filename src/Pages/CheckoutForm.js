@@ -12,7 +12,7 @@ const CheckoutForm = ({ newPrice, insertId }) => {
     const [paymentError, setPaymentError] = useState(null)
     const [paymentSuccess, setPaymentSuccess] = useState(null)
     useEffect(() => {
-        fetch("https://innovus-client.herokuapp.com/create-payment-intent", {
+        fetch("https://proud-lime-bluefish.cyclic.app/create-payment-intent", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({ newPrice }),
@@ -62,7 +62,7 @@ const CheckoutForm = ({ newPrice, insertId }) => {
             setPaymentSuccess("Congrates! Your Payment Is Success")
             setTransactionID(paymentIntent.id)
             if (paymentIntent) {
-                fetch(`https://innovus-client.herokuapp.com/order/${insertId}`, {
+                fetch(`https://proud-lime-bluefish.cyclic.app/order/${insertId}`, {
                     method: "PUT",
                     headers: {
                         "content-type": "application/json"

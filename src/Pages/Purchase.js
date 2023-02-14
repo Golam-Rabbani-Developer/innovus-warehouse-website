@@ -9,7 +9,7 @@ const Purchase = () => {
     const [newQuantity, setNewQuantity] = useState(null)
     const { id } = useParams()
     const { isLoading, data: product, refetch } = useQuery('product', () =>
-        fetch(`https://innovus-client.herokuapp.com/product/${id}`).then(res =>
+        fetch(`https://proud-lime-bluefish.cyclic.app/product/${id}`).then(res =>
             res.json()
         )
     )
@@ -20,7 +20,7 @@ const Purchase = () => {
 
 
     const handleOrderBtn = () => {
-        fetch(`https://innovus-client.herokuapp.com/product/${id}`, {
+        fetch(`https://proud-lime-bluefish.cyclic.app/product/${id}`, {
             method: "PUT",
             headers: {
                 'content-type': 'application/json',

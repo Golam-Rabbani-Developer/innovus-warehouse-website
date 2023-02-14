@@ -6,7 +6,7 @@ const useAdmin = () => {
     const [user] = useAuthState(auth)
     const [admin, setAdmin] = useState("")
     useEffect(() => {
-        fetch(`https://innovus-client.herokuapp.com/admin/users/${user?.email}`, {
+        fetch(`https://proud-lime-bluefish.cyclic.app/admin/users/${user?.email}`, {
             method: "GET",
             headers: {
                 "authorization": `Bearer ${(localStorage.getItem("accessToken"))}`

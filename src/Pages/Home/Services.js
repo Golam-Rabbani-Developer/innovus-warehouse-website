@@ -7,7 +7,7 @@ const Services = () => {
     const location = useLocation()
     const [services, setServices] = useState([])
     useEffect(() => {
-        fetch('https://innovus-client.herokuapp.com/services', {
+        fetch('https://proud-lime-bluefish.cyclic.app/services', {
             method: "GET",
             headers: {
                 "authorization": `Bearer ${(localStorage.getItem("accessToken"))}`

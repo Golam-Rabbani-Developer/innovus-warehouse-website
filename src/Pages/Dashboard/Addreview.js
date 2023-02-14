@@ -11,7 +11,7 @@ const Addreview = () => {
     const [user] = useAuthState(auth)
     const { register, formState: { errors }, handleSubmit, reset } = useForm();
     const { isLoading, data: updateUser, refetch } = useQuery('updateduser', () =>
-        fetch(`https://innovus-client.herokuapp.com/user/${user?.email}`).then(res =>
+        fetch(`https://proud-lime-bluefish.cyclic.app/user/${user?.email}`).then(res =>
             res.json()
         )
     )
@@ -41,7 +41,7 @@ const Addreview = () => {
                         email: updateUser?.email,
                         picture: result.data.url,
                     }
-                    fetch('https://innovus-client.herokuapp.com/review', {
+                    fetch('https://proud-lime-bluefish.cyclic.app/review', {
                         method: "POST",
                         headers: {
                             "content-type": "application/json"
@@ -66,8 +66,8 @@ const Addreview = () => {
                 <h2 className='font-roboto text-xl font-bold mb-5'>Place Your Reviews</h2>
                 <form onSubmit={handleSubmit(onSubmit)}>
                     <div className='flex items-center justify-start gap-4'>
-                        <div class="form-control w-full max-w-xs">
-                            <input id='companyname' name="companyname" type="text" placeholder="Your Company" class="input input-bordered bg-slate-200  w-full max-w-xs rounded-none text-center"
+                        <div className="form-control w-full max-w-xs">
+                            <input id='companyname' name="companyname" type="text" placeholder="Your Company" className="input input-bordered bg-slate-200  w-full max-w-xs rounded-none text-center"
                                 {...register("companyname", {
                                     required: {
                                         value: true,
@@ -75,12 +75,12 @@ const Addreview = () => {
                                     }
                                 })}
                             />
-                            <label class="label">
-                                {errors?.companyname?.type === 'required' && <span class="label-text-alt text-red-400 font-bold">{errors?.companyname?.message}</span>}
+                            <label className="label">
+                                {errors?.companyname?.type === 'required' && <span className="label-text-alt text-red-400 font-bold">{errors?.companyname?.message}</span>}
                             </label>
                         </div>
-                        <div class="form-control w-full max-w-xs">
-                            <input id='designation' name="designation" type="text" placeholder="Designation" class="input input-bordered bg-slate-200  w-full max-w-xs rounded-none text-center"
+                        <div className="form-control w-full max-w-xs">
+                            <input id='designation' name="designation" type="text" placeholder="Designation" className="input input-bordered bg-slate-200  w-full max-w-xs rounded-none text-center"
                                 {...register("designation", {
                                     required: {
                                         value: true,
@@ -88,8 +88,8 @@ const Addreview = () => {
                                     }
                                 })}
                             />
-                            <label class="label">
-                                {errors?.designation?.type === 'required' && <span class="label-text-alt text-red-400 font-bold">{errors?.designation?.message}</span>}
+                            <label className="label">
+                                {errors?.designation?.type === 'required' && <span className="label-text-alt text-red-400 font-bold">{errors?.designation?.message}</span>}
                             </label>
                         </div>
 
@@ -97,8 +97,8 @@ const Addreview = () => {
 
 
 
-                    <div class="form-control w-full ">
-                        <input id='image' name="image" type="file" placeholder="Your image" class="input    w-full max-w-xs rounded-none text-center focus:outline-none ml-[-16px]"
+                    <div className="form-control w-full ">
+                        <input id='image' name="image" type="file" placeholder="Your image" className="input    w-full max-w-xs rounded-none text-center focus:outline-none ml-[-16px]"
                             {...register("file", {
                                 required: {
                                     value: true,
@@ -106,8 +106,8 @@ const Addreview = () => {
                                 }
                             })}
                         />
-                        <label class="label">
-                            {errors?.file?.type === 'required' && <span class="label-text-alt text-red-400 font-bold">{errors?.file?.message}</span>}
+                        <label className="label">
+                            {errors?.file?.type === 'required' && <span className="label-text-alt text-red-400 font-bold">{errors?.file?.message}</span>}
                         </label>
                     </div>
 
@@ -119,7 +119,7 @@ const Addreview = () => {
                             }
                         })}
                     ></textarea>
-                    {errors?.message?.type === 'required' && <span class="label-text-alt text-red-400 font-bold">{errors?.message?.message}</span>}
+                    {errors?.message?.type === 'required' && <span className="label-text-alt text-red-400 font-bold">{errors?.message?.message}</span>}
                     <input type="submit" className='border-none opacity-100 btn btn-primary block  bg-primary max-w-lg w-full rounded-none text-slate-200 hover:opacity-80 mt-6' />
                 </form>
             </div>

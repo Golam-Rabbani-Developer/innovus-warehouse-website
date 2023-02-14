@@ -7,16 +7,15 @@ const Dashboard = () => {
     const location = useLocation()
     return (
         <div>
-            <div class="drawer drawer-mobile">
-                <input id="Dashboard-page" type="checkbox" class="drawer-toggle" />
-                <div class="drawer-content flex flex-col items-center justify-center">
+            <div className="drawer drawer-mobile">
+                <input id="Dashboard-page" type="checkbox" className="drawer-toggle" />
+                <div className="drawer-content flex flex-col items-center justify-center">
                     <Outlet></Outlet>
                 </div>
-                <div class="drawer-side">
-                    <label for="Dashboard-page" class="drawer-overlay"></label>
-                    <ul class="menu p-4 overflow-y-auto w-80 bg-secondary text-white mt-16">
+                <div className="drawer-side">
+                    <label htmlFor="Dashboard-page" className="drawer-overlay"></label>
+                    <ul className="menu p-4 overflow-y-auto w-80 bg-secondary text-white mt-16">
                         <li><Link className={`${location.pathname === "/dashboard" || location.pathname === "/dashboard/myprofile" ? "bg-primary" : ""}`} to="/dashboard/myprofile">Myprofile</Link></li>
-
 
                         {
 

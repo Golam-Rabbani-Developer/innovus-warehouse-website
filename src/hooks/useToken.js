@@ -5,7 +5,7 @@ const useToken = (user) => {
     const email = user?.user?.email;
 
     useEffect(() => {
-        fetch(`https://innovus-client.herokuapp.com/users/${email}`, {
+        fetch(`https://proud-lime-bluefish.cyclic.app/users/${email}`, {
             method: "PUT",
             headers: {
                 "content-type": "application/json"
@@ -17,11 +17,10 @@ const useToken = (user) => {
                 if (data.token) {
                     localStorage.setItem("accessToken", data.token)
                     setToken(data.token)
-
                 }
 
             })
-    }, [user])
+    }, [user, email])
 
     return {
         token,

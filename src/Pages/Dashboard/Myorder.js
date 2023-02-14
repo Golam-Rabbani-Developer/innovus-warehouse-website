@@ -9,7 +9,7 @@ import Loading from '../Shared/Loading';
 const Myorder = () => {
     const [user] = useAuthState(auth)
     const { isLoading, data: orders, refetch } = useQuery('orders', () =>
-        fetch(`https://innovus-client.herokuapp.com/userorders/${user?.email}`, {
+        fetch(`https://proud-lime-bluefish.cyclic.app/userorders/${user?.email}`, {
             method: "GET",
             headers: {
                 "authorization": `Bearer ${(localStorage.getItem("accessToken"))}`
@@ -24,8 +24,8 @@ const Myorder = () => {
     console.log(orders)
     return (
         <div>
-            <div class="overflow-x-auto">
-                <table class="table w-full">
+            <div className="overflow-x-auto">
+                <table className="table w-full">
                     <thead>
                         <tr>
                             <th>S/L No</th>

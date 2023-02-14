@@ -7,7 +7,7 @@ import Product from './Product';
 
 const Products = () => {
     const { isLoading, data: products } = useQuery('products', () =>
-        fetch(`https://innovus-client.herokuapp.com/products`, {
+        fetch(`https://proud-lime-bluefish.cyclic.app/products`, {
             method: "GET",
             headers: {
                 "content-type": "application/json",

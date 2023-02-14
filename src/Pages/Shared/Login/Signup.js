@@ -53,12 +53,12 @@ const Signup = () => {
                 <p className='text-2xl text-slate-100 font-bold text-center font-oswald'>Register Your Account</p>
                 <form onSubmit={handleSubmit(onSubmit)} className='w-8/12 mx-auto'>
 
-                    <div class="form-control w-full max-w-xs mt-[-30px]">
-                        <label class="label relative top-12">
-                            <span class="label-text text-slate-200 text-xl font-bold">Name</span>
+                    <div className="form-control w-full max-w-xs mt-[-30px]">
+                        <label className="label relative top-12">
+                            <span className="label-text text-slate-200 text-xl font-bold">Name</span>
                         </label>
                         <span className='bg-primary relative top-12 w-[38px] h-[48px] flex items-center justify-center text-white text-xl'><MdAttachEmail /></span>
-                        <input id='name' name="name" type="text" placeholder="Your name" class="input input-bordered bg-slate-200  w-full max-w-xs rounded-none text-center"
+                        <input id='name' name="name" type="text" placeholder="Your name" className="input input-bordered bg-slate-200  w-full max-w-xs rounded-none text-center"
                             {...register("name", {
                                 required: {
                                     value: true,
@@ -66,18 +66,18 @@ const Signup = () => {
                                 }
                             })}
                         />
-                        <label class="label">
-                            {errors?.name?.type === 'required' && <span class="label-text-alt text-red-400 font-bold">{errors?.name?.message}</span>}
+                        <label className="label">
+                            {errors?.name?.type === 'required' && <span className="label-text-alt text-red-400 font-bold">{errors?.name?.message}</span>}
                         </label>
                     </div>
 
 
-                    <div class="form-control mt-[-30px] w-full max-w-xs">
-                        <label class="label relative top-12">
-                            <span class="label-text text-slate-200 text-xl font-bold">Email</span>
+                    <div className="form-control mt-[-30px] w-full max-w-xs">
+                        <label className="label relative top-12">
+                            <span className="label-text text-slate-200 text-xl font-bold">Email</span>
                         </label>
                         <span className='bg-primary relative top-12 w-[38px] h-[48px] flex items-center justify-center text-white text-xl'><MdAttachEmail /></span>
-                        <input id='email' name="email" type="text" placeholder="Your Email" class="input input-bordered bg-slate-200  w-full max-w-xs rounded-none text-center"
+                        <input id='email' name="email" type="text" placeholder="Your Email" className="input input-bordered bg-slate-200  w-full max-w-xs rounded-none text-center"
                             {...register("email", {
                                 required: {
                                     value: true,
@@ -85,16 +85,16 @@ const Signup = () => {
                                 }
                             })}
                         />
-                        <label class="label">
-                            {errors?.email?.type === 'required' && <span class="label-text-alt text-red-400 font-bold">{errors?.email?.message}</span>}
+                        <label className="label">
+                            {errors?.email?.type === 'required' && <span className="label-text-alt text-red-400 font-bold">{errors?.email?.message}</span>}
                         </label>
                     </div>
-                    <div class="form-control mt-[-30px] w-full max-w-xs">
-                        <label class="label relative top-12">
-                            <span class="label-text text-slate-200 font-bold text-xl">Password</span>
+                    <div className="form-control mt-[-30px] w-full max-w-xs">
+                        <label className="label relative top-12">
+                            <span className="label-text text-slate-200 font-bold text-xl">Password</span>
                         </label>
                         <span className='bg-primary relative top-12 w-[38px] h-[48px] flex items-center justify-center text-white text-xl'><BiUserVoice /></span>
-                        <input id='password' name="password" type="password" placeholder="Your Password" class="input input-bordered bg-slate-200  w-full max-w-xs rounded-none text-center"
+                        <input id='password' name="password" type="password" placeholder="Your Password" className="input input-bordered bg-slate-200  w-full max-w-xs rounded-none text-center"
                             {...register("password", {
                                 required: {
                                     value: true,
@@ -102,8 +102,8 @@ const Signup = () => {
                                 }
                             })}
                         />
-                        <label class="label">
-                            {errors?.password?.type === 'required' && <span class="label-text-alt text-red-400 font-bold">{errors?.password?.message}</span>}
+                        <label className="label">
+                            {errors?.password?.type === 'required' && <span className="label-text-alt text-red-400 font-bold">{errors?.password?.message}</span>}
                         </label>
                     </div>
 
@@ -116,7 +116,7 @@ const Signup = () => {
                 </form>
                 <div className='font-roboto text-slate-50 w-8/12 mx-auto'>
 
-                    <div class="divider font-oswald">Or Try With</div>
+                    <div className="divider font-oswald">Or Try With</div>
                     <div onClick={() => signInWithGoogle()} className='opacity-100 flex items-center border-[1px] border-secondary cursor-pointer justify-center gap-4 py-2 bg-gradient-to-r rounded-none from-purple-600 to-pink-600 hover:opacity-80 '>
                         <BsGoogle></BsGoogle>
                         Google

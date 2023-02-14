@@ -23,7 +23,7 @@ const Billings = () => {
     const { register, formState: { errors }, handleSubmit, reset } = useForm();
     const { id } = useParams()
     const { isLoading, data: product, refetch } = useQuery('product', () =>
-        fetch(`https://innovus-client.herokuapp.com/product/${id}`, {
+        fetch(`https://proud-lime-bluefish.cyclic.app/product/${id}`, {
             method: "GET",
             headers: {
                 "authorization": `Bearer ${(localStorage.getItem("accessToken"))}`
@@ -54,7 +54,7 @@ const Billings = () => {
             pay: '',
             shift: false,
         }
-        fetch(`https://innovus-client.herokuapp.com/orders/${user?.email}`, {
+        fetch(`https://proud-lime-bluefish.cyclic.app/orders/${user?.email}`, {
             method: "POST",
             headers: {
                 "content-type": "application/json"
@@ -86,11 +86,11 @@ const Billings = () => {
                 <form onSubmit={handleSubmit(onSubmit)} className={`${show ? "hidden" : "block"}`}>
 
                     <div className='flex items-center justify-center flex-col lg:flex-row gap-5 bg-slate-100'>
-                        <div class="form-control w-full">
-                            <label class="label">
-                                <span class="label-text">Name</span>
+                        <div className="form-control w-full">
+                            <label className="label">
+                                <span className="label-text">Name</span>
                             </label>
-                            <input id='name' value={user?.displayName} name="name" readOnly type="text" placeholder="Type here" class="input input-bordered w-full max-w-xs capitalize"
+                            <input id='name' value={user?.displayName} name="name" readOnly type="text" placeholder="Type here" className="input input-bordered w-full max-w-xs capitalize"
                                 {...register("name", {
                                     required: {
                                         value: true,
@@ -98,15 +98,15 @@ const Billings = () => {
                                     }
                                 })}
                             />
-                            <label class="label">
-                                {errors?.name?.type === 'required' && <span class="label-text-alt text-red-500 font-bold">{errors?.name?.message}</span>}
+                            <label className="label">
+                                {errors?.name?.type === 'required' && <span className="label-text-alt text-red-500 font-bold">{errors?.name?.message}</span>}
                             </label>
                         </div>
-                        <div class="form-control w-full ">
-                            <label class="label">
-                                <span class="label-text">Email</span>
+                        <div className="form-control w-full ">
+                            <label className="label">
+                                <span className="label-text">Email</span>
                             </label>
-                            <input id='email' name="email" value={user?.email} readOnly type="text" placeholder="Type here" class="input input-bordered w-full max-w-xs"
+                            <input id='email' name="email" value={user?.email} readOnly type="text" placeholder="Type here" className="input input-bordered w-full max-w-xs"
                                 {...register("email", {
                                     required: {
                                         value: true,
@@ -114,17 +114,17 @@ const Billings = () => {
                                     }
                                 })}
                             />
-                            <label class="label">
-                                {errors?.email?.type === 'required' && <span class="label-text-alt text-red-500 font-bold">{errors?.email?.message}</span>}
+                            <label className="label">
+                                {errors?.email?.type === 'required' && <span className="label-text-alt text-red-500 font-bold">{errors?.email?.message}</span>}
                             </label>
                         </div>
                     </div>
                     <div className='flex items-center justify-center flex-col lg:flex-row gap-5'>
-                        <div class="form-control w-full ">
-                            <label class="label">
-                                <span class="label-text">Phone</span>
+                        <div className="form-control w-full ">
+                            <label className="label">
+                                <span className="label-text">Phone</span>
                             </label>
-                            <input id='phone' name="phone" type="text" placeholder="Type here" class="input input-bordered w-full max-w-xs"
+                            <input id='phone' name="phone" type="text" placeholder="Type here" className="input input-bordered w-full max-w-xs"
                                 {...register("phone", {
                                     required: {
                                         value: true,
@@ -132,15 +132,15 @@ const Billings = () => {
                                     }
                                 })}
                             />
-                            <label class="label">
-                                {errors?.phone?.type === 'required' && <span class="label-text-alt text-red-500 font-bold">{errors?.phone?.message}</span>}
+                            <label className="label">
+                                {errors?.phone?.type === 'required' && <span className="label-text-alt text-red-500 font-bold">{errors?.phone?.message}</span>}
                             </label>
                         </div>
-                        <div class="form-control w-full ">
-                            <label class="label">
-                                <span class="label-text">Address</span>
+                        <div className="form-control w-full ">
+                            <label className="label">
+                                <span className="label-text">Address</span>
                             </label>
-                            <input id='address' name="address" type="text" placeholder="Type here" class="input input-bordered w-full max-w-xs"
+                            <input id='address' name="address" type="text" placeholder="Type here" className="input input-bordered w-full max-w-xs"
                                 {...register("address", {
                                     required: {
                                         value: true,
@@ -148,17 +148,17 @@ const Billings = () => {
                                     }
                                 })}
                             />
-                            <label class="label">
-                                {errors?.address?.type === 'required' && <span class="label-text-alt text-red-500 font-bold">{errors?.address?.message}</span>}
+                            <label className="label">
+                                {errors?.address?.type === 'required' && <span className="label-text-alt text-red-500 font-bold">{errors?.address?.message}</span>}
                             </label>
                         </div>
                     </div>
 
-                    <div class="form-control w-full">
-                        <label class="label">
-                            <span class="label-text">Shipping Address</span>
+                    <div className="form-control w-full">
+                        <label className="label">
+                            <span className="label-text">Shipping Address</span>
                         </label>
-                        <textarea id='shippingaddress' name="shippingaddress" type="text" placeholder="Type here" class="input input-bordered h-[100px] w-full "
+                        <textarea id='shippingaddress' name="shippingaddress" type="text" placeholder="Type here" className="input input-bordered h-[100px] w-full "
                             {...register("shippingaddress", {
                                 required: {
                                     value: true,
@@ -166,8 +166,8 @@ const Billings = () => {
                                 }
                             })}
                         />
-                        <label class="label">
-                            {errors?.shippingaddress?.type === 'required' && <span class="label-text-alt text-red-500 font-bold">{errors?.shippingaddress?.message}</span>}
+                        <label className="label">
+                            {errors?.shippingaddress?.type === 'required' && <span className="label-text-alt text-red-500 font-bold">{errors?.shippingaddress?.message}</span>}
                         </label>
                     </div>
                     <input type="submit" value="Place Order" className='border-2 mt-12 btn-secondary btn border-none rounded-none focus:outline-none w-full' />

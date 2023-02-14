@@ -26,7 +26,7 @@ const AddProduct = () => {
                         quantity: parseInt(data.quantity)
                     }
                     console.log(result, ".....................", result.url)
-                    fetch("https://innovus-client.herokuapp.com/product", {
+                    fetch("https://proud-lime-bluefish.cyclic.app/product", {
                         method: "POST",
                         headers: {
                             'content-type': "application/json",
@@ -51,12 +51,12 @@ const AddProduct = () => {
                 <h2 className='font-oswald text-xl text-center font-bold my-3'>Add Another Product</h2>
                 <form onSubmit={handleSubmit(onSubmit)} className='w-full mx-auto'>
                     <div className='flex flex-col lg:flex-row items-center justify-center lg:gap-12'>
-                        <div class="form-control mt-[-30px] w-full ">
-                            <label class="label relative top-7">
-                                <span class="label-text  font-bold ">Product Name</span>
+                        <div className="form-control mt-[-30px] w-full ">
+                            <label className="label relative top-7">
+                                <span className="label-text  font-bold ">Product Name</span>
                             </label>
                             <input type="text" />
-                            <input id='name' name="name" type="name" class="input input-bordered  bg-slate-200  w-full  rounded-none text-center focus:outline-primary"
+                            <input id='name' name="name" type="name" className="input input-bordered  bg-slate-200  w-full  rounded-none text-center focus:outline-primary"
                                 {...register("name", {
                                     required: {
                                         value: true,
@@ -64,17 +64,17 @@ const AddProduct = () => {
                                     }
                                 })}
                             />
-                            <label class="label">
-                                {errors?.name?.type === 'required' && <span class="label-text-alt text-red-400 font-bold">{errors?.name?.message}</span>}
+                            <label className="label">
+                                {errors?.name?.type === 'required' && <span className="label-text-alt text-red-400 font-bold">{errors?.name?.message}</span>}
                             </label>
                         </div>
 
-                        <div class="form-control w-full ">
-                            <label class="label ">
-                                <span class="label-text   font-bold">Product Quantity</span>
+                        <div className="form-control w-full ">
+                            <label className="label ">
+                                <span className="label-text   font-bold">Product Quantity</span>
                             </label>
 
-                            <input id='quantity' name="quantity" type="text" class="input input-bordered  bg-slate-200  w-full max-w-xs rounded-none text-center focus:outline-primary"
+                            <input id='quantity' name="quantity" type="text" className="input input-bordered  bg-slate-200  w-full max-w-xs rounded-none text-center focus:outline-primary"
                                 {...register("quantity", {
                                     required: {
                                         value: true,
@@ -82,18 +82,18 @@ const AddProduct = () => {
                                     }
                                 })}
                             />
-                            <label class="label">
-                                {errors?.quantity?.type === 'required' && <span class="label-text-alt text-red-400 font-bold">{errors?.quantity?.message}</span>}
+                            <label className="label">
+                                {errors?.quantity?.type === 'required' && <span className="label-text-alt text-red-400 font-bold">{errors?.quantity?.message}</span>}
                             </label>
                         </div>
                     </div>
                     <div className='flex flex-col items-center justify-center lg:flex-row lg:gap-12'>
-                        <div class="form-control w-full">
-                            <label class="label ">
-                                <span class="label-text   font-bold">Product Price</span>
+                        <div className="form-control w-full">
+                            <label className="label ">
+                                <span className="label-text   font-bold">Product Price</span>
                             </label>
 
-                            <input id='price' name="price" type="text" class="input input-bordered  bg-slate-200  w-full max-w-xs rounded-none text-center focus:outline-primary"
+                            <input id='price' name="price" type="text" className="input input-bordered  bg-slate-200  w-full max-w-xs rounded-none text-center focus:outline-primary"
                                 {...register("price", {
                                     required: {
                                         value: true,
@@ -101,17 +101,17 @@ const AddProduct = () => {
                                     }
                                 })}
                             />
-                            <label class="label">
-                                {errors?.price?.type === 'required' && <span class="label-text-alt text-red-400 font-bold">{errors?.price?.message}</span>}
+                            <label className="label">
+                                {errors?.price?.type === 'required' && <span className="label-text-alt text-red-400 font-bold">{errors?.price?.message}</span>}
                             </label>
                         </div>
 
-                        <div class="form-control w-full ">
-                            <label class="label ">
-                                <span class="label-text   font-bold">Select Image</span>
+                        <div className="form-control w-full ">
+                            <label className="label ">
+                                <span className="label-text   font-bold">Select Image</span>
                             </label>
 
-                            <input id='image' name="image" type="file" class="input input-bordered  bg-slate-200  w-full max-w-xs rounded-none text-center focus:outline-primary"
+                            <input id='image' name="image" type="file" className="input input-bordered  bg-slate-200  w-full max-w-xs rounded-none text-center focus:outline-primary"
                                 {...register("file", {
                                     required: {
                                         value: true,
@@ -119,20 +119,20 @@ const AddProduct = () => {
                                     }
                                 })}
                             />
-                            <label class="label">
-                                {errors?.file?.type === 'required' && <span class="label-text-alt text-red-400 font-bold">{errors?.file?.message}</span>}
+                            <label className="label">
+                                {errors?.file?.type === 'required' && <span className="label-text-alt text-red-400 font-bold">{errors?.file?.message}</span>}
                             </label>
                         </div>
 
 
                     </div>
 
-                    <div class="form-control w-full">
-                        <label class="label ">
-                            <span class="label-text   font-bold">Product Description</span>
+                    <div className="form-control w-full">
+                        <label className="label ">
+                            <span className="label-text   font-bold">Product Description</span>
                         </label>
 
-                        <input id='description' name="description" type="text" class="input input-bordered  bg-slate-200 h-[200px]  w-full rounded-none text-center focus:outline-primary"
+                        <input id='description' name="description" type="text" className="input input-bordered  bg-slate-200 h-[200px]  w-full rounded-none text-center focus:outline-primary"
                             {...register("description", {
                                 required: {
                                     value: true,
@@ -140,8 +140,8 @@ const AddProduct = () => {
                                 }
                             })}
                         />
-                        <label class="label">
-                            {errors?.description?.type === 'required' && <span class="label-text-alt text-red-400 font-bold">{errors?.description?.message}</span>}
+                        <label className="label">
+                            {errors?.description?.type === 'required' && <span className="label-text-alt text-red-400 font-bold">{errors?.description?.message}</span>}
                         </label>
                     </div>
 

@@ -11,7 +11,7 @@ const RequireAdmin = ({ children }) => {
     const [admin, setAdmin] = useState(false)
 
     useEffect(() => {
-        fetch(`https://innovus-client.herokuapp.com/admin/users/${user?.email}`, {
+        fetch(`https://proud-lime-bluefish.cyclic.app/admin/users/${user?.email}`, {
             method: "GET",
             headers: {
                 "authorization": `Bearer ${(localStorage.getItem("accessToken"))}`

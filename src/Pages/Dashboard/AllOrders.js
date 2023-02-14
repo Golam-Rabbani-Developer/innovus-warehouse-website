@@ -5,7 +5,7 @@ import Loading from '../Shared/Loading';
 
 const AllOrders = () => {
     const { isLoading, data: orders, refetch } = useQuery('orders', () =>
-        fetch('https://innovus-client.herokuapp.com/orders').then(res =>
+        fetch('https://proud-lime-bluefish.cyclic.app/orders').then(res =>
             res.json()
         )
     )
@@ -16,7 +16,7 @@ const AllOrders = () => {
 
     // /shift/orders/:id
     const handleShiftBtn = (id) => {
-        fetch(`https://innovus-client.herokuapp.com/shift/orders/${id}`, {
+        fetch(`https://proud-lime-bluefish.cyclic.app/shift/orders/${id}`, {
             method: "PUT",
             headers: {
                 "content-type": "application/json",
@@ -32,7 +32,7 @@ const AllOrders = () => {
             })
     }
     const handledeleteBtn = (id) => {
-        fetch(`https://innovus-client.herokuapp.com/order/${id}`, {
+        fetch(`https://proud-lime-bluefish.cyclic.app/order/${id}`, {
             method: "DELETE",
             headers: {
                 "content-type": "application/json",
@@ -51,8 +51,8 @@ const AllOrders = () => {
     }
     return (
         <div>
-            <div class="overflow-x-auto">
-                <table class="table w-full">
+            <div className="overflow-x-auto">
+                <table className="table w-full">
                     <thead>
                         <tr>
                             <th>S/L No</th>

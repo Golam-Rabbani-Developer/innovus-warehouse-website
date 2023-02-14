@@ -5,14 +5,14 @@ import { BiRightArrow } from "react-icons/bi"
 import { BsSearch } from 'react-icons/bs'
 
 const Shop = () => {
-    const url = `https://innovus-client.herokuapp.com/products`
+    const url = `https://proud-lime-bluefish.cyclic.app/products`
     const { products } = useProducts(url)
     return (
         <div className='flex flex-col lg:flex-row justify-center gap-8 mt-32'>
             <div>
-                <div class="form-control w-full max-w-xs">
+                <div className="form-control w-full max-w-xs">
                     <span className='bg-primary relative top-12 w-[38px] h-[48px] flex items-center justify-center text-white text-xl'><BsSearch /></span>
-                    <input id='email' name="email" type="text" placeholder="search" class="input input-bordered bg-slate-200  w-full max-w-xs rounded-none text-center focus:outline-none"
+                    <input id='email' name="email" type="text" placeholder="search" className="input input-bordered bg-slate-200  w-full max-w-xs rounded-none text-center focus:outline-none"
                     />
                 </div>
                 <div className='font-roboto space-y-4'>

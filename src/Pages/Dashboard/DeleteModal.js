@@ -5,7 +5,7 @@ const DeleteModal = ({ product, setModalProduct, refetch }) => {
     const { name } = product;
 
     const handleDeleteBtn = (id) => {
-        fetch(`https://innovus-client.herokuapp.com/product/${id}`, {
+        fetch(`https://proud-lime-bluefish.cyclic.app/product/${id}`, {
             method: "DELETE",
             headers: {
                 'content-type': 'application/json',
@@ -22,17 +22,16 @@ const DeleteModal = ({ product, setModalProduct, refetch }) => {
             })
     }
 
-
     return (
         <div>
-            <input type="checkbox" id="deleting-modal" class="modal-toggle" />
-            <div class="modal modal-bottom sm:modal-middle">
-                <div class="modal-box">
-                    <h3 class="font-bold text-lg">Are You Sure ?</h3>
-                    <p class="py-4">You want to Delete <span className='text-blue-500 font-bold'>{name}</span></p>
-                    <div class="modal-action">
-                        <label for="deleting-modal" class="btn">Cancel</label>
-                        <label onClick={() => handleDeleteBtn(product._id)} class="btn btn-secondary bg-red-500 text-white border-none">Delete</label>
+            <input type="checkbox" id="deleting-modal" className="modal-toggle" />
+            <div className="modal modal-bottom sm:modal-middle">
+                <div className="modal-box">
+                    <h3 className="font-bold text-lg">Are You Sure ?</h3>
+                    <p className="py-4">You want to Delete <span className='text-blue-500 font-bold'>{name}</span></p>
+                    <div className="modal-action">
+                        <label htmlFor="deleting-modal" className="btn">Cancel</label>
+                        <label onClick={() => handleDeleteBtn(product._id)} className="btn btn-secondary bg-red-500 text-white border-none">Delete</label>
                     </div>
                 </div>
             </div>
